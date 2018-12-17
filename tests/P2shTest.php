@@ -9,8 +9,16 @@ use AndKom\Bitcoin\Address\Output\OutputFactory;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class P2shTest
+ * @package AndKom\Bitcoin\Address\Tests
+ */
 class P2shTest extends TestCase
 {
+    /**
+     * @return OutputInterface
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
     protected function getOutput(): OutputInterface
     {
         $factory = new OutputFactory();
@@ -18,20 +26,107 @@ class P2shTest extends TestCase
         return $factory->p2sh($p2ms);
     }
 
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
     public function testHex()
     {
         $this->assertEquals('a91483eebb7d79aa1d388e3b0ac65b98ac580c4da01a87', $this->getOutput()->hex());
     }
 
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
     public function testAsm()
     {
         $this->assertEquals('HASH160 PUSHDATA(20)[83eebb7d79aa1d388e3b0ac65b98ac580c4da01a] EQUAL', $this->getOutput()->asm());
     }
 
-    public function testAddress()
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressBitcoin()
     {
         $this->assertEquals('3DicS6C8JZm59RsrgXr56iVHzYdQngiehV', $this->getOutput()->address());
-        $this->assertEquals('2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7', $this->getOutput()->address(NetworkFactory::bitcoinTest()));
-        $this->assertEquals('2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7', $this->getOutput()->address(NetworkFactory::bitcoinRegtest()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressBitcoinTestnet()
+    {
+        $this->assertEquals('2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7', $this->getOutput()->address(NetworkFactory::bitcoinTestnet()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressLitecoin()
+    {
+        $this->assertEquals('MKvkjyc6FgcVww9knQqQvMjhKFDrpERUsa', $this->getOutput()->address(NetworkFactory::litecoin()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressLitecoinTestnet()
+    {
+        $this->assertEquals('QYdacqzPw8KWVQGSymVxoMuzMHHQYBayi6', $this->getOutput()->address(NetworkFactory::litecoinTestnet()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressDogecoin()
+    {
+        $this->assertEquals('A4TsAwG2Nddy3oFL6fWVLr7fh81SuuSoLQ', $this->getOutput()->address(NetworkFactory::dogecoin()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressDogecoinTestnet()
+    {
+        $this->assertEquals('2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7', $this->getOutput()->address(NetworkFactory::dogecoinTestnet()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressViacoin()
+    {
+        $this->assertEquals('EVBW18YCBcjc3ZnHNHAzgE7KcfqpgPjScU', $this->getOutput()->address(NetworkFactory::viacoin()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressViacoinTestnet()
+    {
+        $this->assertEquals('2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7', $this->getOutput()->address(NetworkFactory::viacoinTestnet()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressDash()
+    {
+        $this->assertEquals('7eSFGHUJ7Yri9CQox9WaS6Uwv6TngFDeEa', $this->getOutput()->address(NetworkFactory::dash()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressDashTestnet()
+    {
+        $this->assertEquals('8rT4DcNAF6FLbVq52QWXtUJJocEcmYMNRG', $this->getOutput()->address(NetworkFactory::dashTestnet()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testAddressZcash()
+    {
+        $this->assertEquals('t3WbDSRcGGtYfk4vkcxfCEXbDFCpVZxhxKh', $this->getOutput()->address(NetworkFactory::zcash()));
     }
 }

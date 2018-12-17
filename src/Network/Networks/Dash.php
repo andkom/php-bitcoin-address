@@ -5,23 +5,23 @@ declare(strict_types=1);
 namespace AndKom\Bitcoin\Address\Network\Networks;
 
 /**
- * Class BitcoinTestnet
+ * Class Dash
  * @package AndKom\Bitcoin\Address\Network\Networks
  */
-class BitcoinTestnet extends Bitcoin
+class Dash extends Bitcoin
 {
     /**
      * @var string
      */
-    protected $prefixP2pkh = "\x6f";
+    protected $prefixP2pkh = "\x4c";
 
     /**
      * @var string
      */
-    protected $prefixP2sh = "\xc4";
+    protected $prefixP2sh = "\x10";
 
     /**
-     * @var string
+     * @var null
      */
-    protected $prefixBech32 = 'tb';
+    protected $prefixBech32 = null;
 }

@@ -5,23 +5,23 @@ declare(strict_types=1);
 namespace AndKom\Bitcoin\Address\Network\Networks;
 
 /**
- * Class BitcoinTestnet
+ * Class Viacoin
  * @package AndKom\Bitcoin\Address\Network\Networks
  */
-class BitcoinTestnet extends Bitcoin
+class Viacoin extends Bitcoin
 {
     /**
      * @var string
      */
-    protected $prefixP2pkh = "\x6f";
+    protected $prefixP2pkh = "\x47";
 
     /**
      * @var string
      */
-    protected $prefixP2sh = "\xc4";
+    protected $prefixP2sh = "\x21";
 
     /**
      * @var string
      */
-    protected $prefixBech32 = 'tb';
+    protected $prefixBech32 = 'via';
 }

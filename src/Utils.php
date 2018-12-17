@@ -43,17 +43,17 @@ class Utils
 
     /**
      * @param string $hash
-     * @param int $prefix
+     * @param string $prefix
      * @return string
      * @throws \Exception
      */
-    static public function base58address(string $hash, int $prefix = 0): string
+    static public function base58address(string $hash, string $prefix = "\x00"): string
     {
         if (static::HASH160_LEN != strlen($hash)) {
             throw new Exception('Invalid hash length.');
         }
 
-        $payload = chr($prefix) . $hash;
+        $payload = $prefix . $hash;
         $checksum = substr(static::hash256($payload), 0, 4);
         $address = $payload . $checksum;
         $encoded = (new Base58())->encode($address);

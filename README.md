@@ -18,7 +18,15 @@ A simple P2PK, P2PKH, P2SH, P2WPKH, P2WSH output script/address generator.
 
 - Bitcoin
 - Bitcoin Testnet
-- Bitcoin Regtest
+- Litecoin
+- Litecoin Testnet
+- Dogecoin
+- Dogecoin Testnet
+- Viacoin
+- Viacoin Testnet
+- Dash
+- Dash Testnet
+- Zcash
 
 ### Installation
 

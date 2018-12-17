@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndKom\Bitcoin\Address\Network\Networks;
 
+use AndKom\Bitcoin\Address\Exception;
 use AndKom\Bitcoin\Address\Network\NetworkInterface;
 use AndKom\Bitcoin\Address\Utils;
 use function BitWasp\Bech32\encodeSegwit;
@@ -15,14 +16,14 @@ use function BitWasp\Bech32\encodeSegwit;
 class Bitcoin implements NetworkInterface
 {
     /**
-     * @var int
+     * @var string
      */
-    protected $prefixP2pkh = 0x00;
+    protected $prefixP2pkh = "\x00";
 
     /**
-     * @var int
+     * @var string
      */
-    protected $prefixP2sh = 0x05;
+    protected $prefixP2sh = "\x05";
 
     /**
      * @var string
@@ -50,22 +51,37 @@ class Bitcoin implements NetworkInterface
     }
 
     /**
+     * @return string
+     * @throws Exception
+     */
+    public function getPrefixBech32(): string
+    {
+        if (!$this->prefixBech32) {
+            throw new Exception('Empty bech32 prefix.');
+        }
+
+        return $this->prefixBech32;
+    }
+
+    /**
      * @param string $pubKeyHash
      * @return string
+     * @throws Exception
      * @throws \BitWasp\Bech32\Exception\Bech32Exception
      */
     public function getAddressP2wpkh(string $pubKeyHash): string
     {
-        return encodeSegwit($this->prefixBech32, 0, $pubKeyHash);
+        return encodeSegwit($this->getPrefixBech32(), 0, $pubKeyHash);
     }
 
     /**
      * @param string $witnessScriptHash
      * @return string
+     * @throws Exception
      * @throws \BitWasp\Bech32\Exception\Bech32Exception
      */
     public function getAddressP2wsh(string $witnessScriptHash): string
     {
-        return encodeSegwit($this->prefixBech32, 0, $witnessScriptHash);
+        return encodeSegwit($this->getPrefixBech32(), 0, $witnessScriptHash);
     }
 }

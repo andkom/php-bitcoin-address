@@ -4,32 +4,37 @@ declare(strict_types=1);
 
 namespace AndKom\Bitcoin\Address\Tests;
 
-use AndKom\Bitcoin\Address\Network\NetworkFactory;
 use AndKom\Bitcoin\Address\Output\OutputFactory;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
-use PHPUnit\Framework\TestCase;
 
-class P2pkTest extends TestCase
+/**
+ * Class P2pkTest
+ * @package AndKom\Bitcoin\Address\Tests
+ */
+class P2pkTest extends P2pkhTest
 {
+    /**
+     * @return OutputInterface
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
     protected function getOutput(): OutputInterface
     {
         return OutputFactory::p2pk(hex2bin('0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798'));
     }
 
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
     public function testHex()
     {
         $this->assertEquals('210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac', $this->getOutput()->hex());
     }
 
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
     public function testAsm()
     {
         $this->assertEquals('PUSHDATA(33)[0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798] CHECKSIG', $this->getOutput()->asm());
-    }
-
-    public function testAddress()
-    {
-        $this->assertEquals('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH', $this->getOutput()->address());
-        $this->assertEquals('mrCDrCybB6J1vRfbwM5hemdJz73FwDBC8r', $this->getOutput()->address(NetworkFactory::bitcoinTest()));
-        $this->assertEquals('mrCDrCybB6J1vRfbwM5hemdJz73FwDBC8r', $this->getOutput()->address(NetworkFactory::bitcoinRegtest()));
     }
 }
