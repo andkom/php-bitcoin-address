@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndKom\Bitcoin\Address\Output;
 
+use AndKom\Bitcoin\Address\Exception;
 use AndKom\Bitcoin\Address\Network\NetworkFactory;
 use AndKom\Bitcoin\Address\Network\NetworkInterface;
 use AndKom\Bitcoin\Address\Utils;
@@ -45,5 +46,21 @@ abstract class AbstractOutput implements OutputInterface
     protected function network(NetworkInterface $network = null): NetworkInterface
     {
         return $network ?: NetworkFactory::getDefaultNetwork();
+    }
+
+    /**
+     * @param string $hex
+     * @return OutputInterface
+     * @throws Exception
+     */
+    static public function fromHex(string $hex): OutputInterface
+    {
+        $script = hex2bin($hex);
+
+        if ($script === false) {
+            throw new Exception('Invalid hex-encoded string.');
+        }
+
+        return static::fromScript($script);
     }
 }

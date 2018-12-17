@@ -53,4 +53,20 @@ class Utils
         $base58 = (new Base58())->encode($address);
         return $base58;
     }
+
+    /**
+     * @param string $hex
+     * @return string
+     * @throws Exception
+     */
+    static public function hex2bin(string $hex): string
+    {
+        $bin = @hex2bin($hex);
+
+        if (false === $bin) {
+            throw new Exception('Invalid hex-encoded string.');
+        }
+
+        return $bin;
+    }
 }

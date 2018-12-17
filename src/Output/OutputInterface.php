@@ -56,4 +56,10 @@ interface OutputInterface
      * @return OutputInterface
      */
     static public function fromScript(string $script): OutputInterface;
+
+    /**
+     * @param string $hex
+     * @return OutputInterface
+     */
+    static public function fromHex(string $hex): OutputInterface;
 }

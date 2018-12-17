@@ -89,3 +89,9 @@ $p2ms = $factory->p2ms(2, [$pubKey1, $pubKey2, $pubKey3]);
 $p2wsh = $factory->p2wsh($p2ms);
 $address = $factory->p2sh($p2wsh)->address();
 ```
+
+Generate an address from an output script:
+
+```php
+$address = OutputFactory::fromScript($script)->address();
+```
