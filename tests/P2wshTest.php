@@ -7,6 +7,7 @@ namespace AndKom\Bitcoin\Address\Tests;
 use AndKom\Bitcoin\Address\Network\NetworkFactory;
 use AndKom\Bitcoin\Address\Output\OutputFactory;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
+use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -88,5 +89,14 @@ class P2wshTest extends TestCase
     public function testAddressViacoinTestnet()
     {
         $this->assertEquals('tvia1q9qs9xv7mjghkd69fgx62xttxmeww5q7eekjxu0nxtzf4yu4ekf8s4nmu7n', $this->getOutput()->address(NetworkFactory::viacoinTestnet()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testFromScript()
+    {
+        $output = $this->getOutput();
+        $this->assertEquals($output->script(), P2wsh::fromScript($output->script())->script());
     }
 }

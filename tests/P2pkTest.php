@@ -6,6 +6,7 @@ namespace AndKom\Bitcoin\Address\Tests;
 
 use AndKom\Bitcoin\Address\Output\OutputFactory;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
+use AndKom\Bitcoin\Address\Output\Outputs\P2pk;
 
 /**
  * Class P2pkTest
@@ -36,5 +37,14 @@ class P2pkTest extends P2pkhTest
     public function testAsm()
     {
         $this->assertEquals('PUSHDATA(33)[0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798] CHECKSIG', $this->getOutput()->asm());
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testFromScript()
+    {
+        $output = $this->getOutput();
+        $this->assertEquals($output->script(), P2pk::fromScript($output->script())->script());
     }
 }

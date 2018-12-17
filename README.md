@@ -1,6 +1,6 @@
 ## PHP Bitcoin Address
 
-A simple P2PK, P2PKH, P2SH, P2WPKH, P2WSH output script/address generator.
+A simple P2PK, P2PKH, P2SH, P2WPKH, P2WSH output script/address parser/generator.
 
 **Supported types:**
 

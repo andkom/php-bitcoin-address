@@ -50,7 +50,7 @@ class Utils
         $payload = $prefix . Validate::pubKeyHash($hash);
         $checksum = substr(static::hash256($payload), 0, 4);
         $address = $payload . $checksum;
-        $encoded = (new Base58())->encode($address);
-        return $encoded;
+        $base58 = (new Base58())->encode($address);
+        return $base58;
     }
 }

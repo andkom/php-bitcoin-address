@@ -6,6 +6,7 @@ namespace AndKom\Bitcoin\Address\Tests;
 
 use AndKom\Bitcoin\Address\Output\OutputFactory;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
+use AndKom\Bitcoin\Address\Output\Outputs\P2ms;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -37,5 +38,14 @@ class P2msTest extends TestCase
     public function testAsm()
     {
         $this->assertEquals('1 PUSHDATA(33)[0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798] 1 CHECKMULTISIG', $this->getOutput()->asm());
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
+    public function testFromScript()
+    {
+        $output = $this->getOutput();
+        $this->assertEquals($output->script(), P2ms::fromScript($output->script())->script());
     }
 }
