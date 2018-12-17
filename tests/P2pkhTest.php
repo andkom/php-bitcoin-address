@@ -61,7 +61,7 @@ class P2pkhTest extends TestCase
      */
     public function testAddressBitcoinCash()
     {
-        $this->assertEquals('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH', $this->getOutput()->address(NetworkFactory::bitcoinCash()));
+        $this->assertEquals('bitcoincash:qp63uahgrxged4z5jswyt5dn5v3lzsem6cy4spdc2h', $this->getOutput()->address(NetworkFactory::bitcoinCash()));
     }
 
     /**

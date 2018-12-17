@@ -6,7 +6,6 @@ namespace AndKom\Bitcoin\Address\Network\Networks;
 
 use AndKom\Bitcoin\Address\Exception;
 use AndKom\Bitcoin\Address\Network\NetworkInterface;
-use AndKom\Bitcoin\Address\Output\OutputInterface;
 use AndKom\Bitcoin\Address\Utils;
 use function BitWasp\Bech32\encodeSegwit;
 
@@ -42,13 +41,13 @@ class Bitcoin implements NetworkInterface
     }
 
     /**
-     * @param OutputInterface $output
+     * @param string $scriptHash
      * @return string
      * @throws \Exception
      */
-    public function getAddressP2sh(OutputInterface $output): string
+    public function getAddressP2sh(string $scriptHash): string
     {
-        return Utils::base58address($output->hash(), $this->prefixP2sh);
+        return Utils::base58address($scriptHash, $this->prefixP2sh);
     }
 
     /**
@@ -76,13 +75,13 @@ class Bitcoin implements NetworkInterface
     }
 
     /**
-     * @param OutputInterface $output
+     * @param string $witnessHash
      * @return string
      * @throws Exception
      * @throws \BitWasp\Bech32\Exception\Bech32Exception
      */
-    public function getAddressP2wsh(OutputInterface $output): string
+    public function getAddressP2wsh(string $witnessHash): string
     {
-        return encodeSegwit($this->getPrefixBech32(), 0, $output->witnessHash());
+        return encodeSegwit($this->getPrefixBech32(), 0, $witnessHash);
     }
 }

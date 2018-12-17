@@ -61,14 +61,6 @@ class P2wshTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAddressBitcoinCash()
-    {
-        $this->assertEquals('bitcoincash:pzp7awma0x4p6wyw8v9vvkuc43vqcndqrg9umkmd8g', $this->getOutput()->address(NetworkFactory::bitcoinCash()));
-    }
-
-    /**
-     * @throws \AndKom\Bitcoin\Address\Exception
-     */
     public function testAddressLitecoin()
     {
         $this->assertEquals('ltc1q9qs9xv7mjghkd69fgx62xttxmeww5q7eekjxu0nxtzf4yu4ekf8sk93rj4', $this->getOutput()->address(NetworkFactory::litecoin()));

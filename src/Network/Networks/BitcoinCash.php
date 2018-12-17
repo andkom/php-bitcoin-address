@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace AndKom\Bitcoin\Address\Network\Networks;
 
-use AndKom\Bitcoin\Address\Output\OutputInterface;
 use CashAddr\CashAddress;
 
 /**
@@ -14,9 +13,19 @@ use CashAddr\CashAddress;
 class BitcoinCash extends Bitcoin
 {
     /**
-     * @var null
+     * @var string
      */
-    protected $prefixBech32 = 'bitcoincash';
+    protected $prefixP2pkh = 'bitcoincash';
+
+    /**
+     * @var string
+     */
+    protected $prefixP2sh = 'bitcoincash';
+
+    /**
+     * @var string
+     */
+    protected $prefixBech32 = null;
 
     /**
      * @param string $pubKeyHash
@@ -24,19 +33,19 @@ class BitcoinCash extends Bitcoin
      * @throws \CashAddr\Exception\Base32Exception
      * @throws \CashAddr\Exception\CashAddressException
      */
-    public function getAddressP2wpkh(string $pubKeyHash): string
+    public function getAddressP2pkh(string $pubKeyHash): string
     {
-        return CashAddress::encode($this->prefixBech32, 'pubkeyhash', $pubKeyHash);
+        return CashAddress::encode($this->prefixP2pkh, 'pubkeyhash', $pubKeyHash);
     }
 
     /**
-     * @param OutputInterface $output
+     * @param string $scriptHash
      * @return string
      * @throws \CashAddr\Exception\Base32Exception
      * @throws \CashAddr\Exception\CashAddressException
      */
-    public function getAddressP2wsh(OutputInterface $output): string
+    public function getAddressP2sh(string $scriptHash): string
     {
-        return CashAddress::encode($this->prefixBech32, 'scripthash', $output->hash());
+        return CashAddress::encode($this->prefixP2sh, 'scripthash', $scriptHash);
     }
 }

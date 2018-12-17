@@ -63,7 +63,7 @@ class P2shTest extends TestCase
      */
     public function testAddressBitcoinCash()
     {
-        $this->assertEquals('3DicS6C8JZm59RsrgXr56iVHzYdQngiehV', $this->getOutput()->address(NetworkFactory::bitcoinCash()));
+        $this->assertEquals('bitcoincash:pzp7awma0x4p6wyw8v9vvkuc43vqcndqrg9umkmd8g', $this->getOutput()->address(NetworkFactory::bitcoinCash()));
     }
 
     /**
