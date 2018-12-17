@@ -15,8 +15,6 @@ class Validate
     const UNCOMPRESSED_PUBKEY_LEN = 65;
     const UNCOMRPESSED_PUBKEY_PREFIX = "\04";
     const PUBKEY_HASH_LEN = 20;
-    const SCRIPT_HASH_LEN = 20;
-    const WITNESS_SCRIPT_HASH_LEN = 32;
 
     /**
      * @param string $pubKey
@@ -55,33 +53,5 @@ class Validate
         }
 
         return $pubKeyHash;
-    }
-
-    /**
-     * @param string $scriptHash
-     * @return string
-     * @throws Exception
-     */
-    static public function scriptHash(string $scriptHash): string
-    {
-        if (static::SCRIPT_HASH_LEN != strlen($scriptHash)) {
-            throw new Exception(sprintf('Invalid script hash: %s.', bin2hex($scriptHash)));
-        }
-
-        return $scriptHash;
-    }
-
-    /**
-     * @param string $witnessScriptHash
-     * @return string
-     * @throws Exception
-     */
-    static public function witnessScriptHash(string $witnessScriptHash): string
-    {
-        if (static::WITNESS_SCRIPT_HASH_LEN != strlen($witnessScriptHash)) {
-            throw new Exception(sprintf('Invalid witness script hash: %s.', bin2hex($witnessScriptHash)));
-        }
-
-        return $witnessScriptHash;
     }
 }

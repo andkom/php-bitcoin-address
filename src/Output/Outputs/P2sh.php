@@ -8,7 +8,6 @@ use AndKom\Bitcoin\Address\Network\NetworkInterface;
 use AndKom\Bitcoin\Address\Output\AbstractOutput;
 use AndKom\Bitcoin\Address\Output\Op;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
-use AndKom\Bitcoin\Address\Validate;
 
 /**
  * Class P2sh
@@ -20,20 +19,15 @@ class P2sh extends AbstractOutput
     /**
      * @var string
      */
-    protected $scriptHash;
+    protected $output;
 
     /**
      * P2sh constructor.
-     * @param string|OutputInterface $scriptHash
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @param OutputInterface $output
      */
-    public function __construct($scriptHash)
+    public function __construct(OutputInterface $output)
     {
-        if ($scriptHash instanceof OutputInterface) {
-            $scriptHash = $scriptHash->hash();
-        }
-
-        $this->scriptHash = Validate::scriptHash($scriptHash);
+        $this->output = $output;
     }
 
     /**
@@ -41,7 +35,7 @@ class P2sh extends AbstractOutput
      */
     public function script(): string
     {
-        return Op::HASH160 . "\x14" . $this->scriptHash . Op::EQUAL;
+        return Op::HASH160 . "\x14" . $this->output->hash() . Op::EQUAL;
     }
 
     /**
@@ -49,7 +43,7 @@ class P2sh extends AbstractOutput
      */
     public function asm(): string
     {
-        return sprintf('HASH160 PUSHDATA(20)[%s] EQUAL', bin2hex($this->scriptHash));
+        return sprintf('HASH160 PUSHDATA(20)[%s] EQUAL', bin2hex($this->output->hash()));
     }
 
     /**
@@ -59,6 +53,6 @@ class P2sh extends AbstractOutput
      */
     public function address(NetworkInterface $network = null): string
     {
-        return $this->network($network)->getAddressP2sh($this->scriptHash);
+        return $this->network($network)->getAddressP2sh($this->output);
     }
 }

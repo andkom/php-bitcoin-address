@@ -7,7 +7,6 @@ namespace AndKom\Bitcoin\Address\Output\Outputs;
 use AndKom\Bitcoin\Address\Network\NetworkInterface;
 use AndKom\Bitcoin\Address\Output\AbstractOutput;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
-use AndKom\Bitcoin\Address\Validate;
 
 /**
  * Class P2wsh
@@ -19,20 +18,15 @@ class P2wsh extends AbstractOutput
     /**
      * @var string
      */
-    protected $witnessScriptHash;
+    protected $output;
 
     /**
      * P2wsh constructor.
-     * @param string|OutputInterface $witnessScriptHash
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @param OutputInterface $output
      */
-    public function __construct($witnessScriptHash)
+    public function __construct(OutputInterface $output)
     {
-        if ($witnessScriptHash instanceof OutputInterface) {
-            $witnessScriptHash = $witnessScriptHash->witnessHash();
-        }
-
-        $this->witnessScriptHash = Validate::witnessScriptHash($witnessScriptHash);
+        $this->output = $output;
     }
 
     /**
@@ -40,7 +34,7 @@ class P2wsh extends AbstractOutput
      */
     public function script(): string
     {
-        return "\x00\x20" . $this->witnessScriptHash;
+        return "\x00\x20" . $this->output->witnessHash();
     }
 
     /**
@@ -48,7 +42,7 @@ class P2wsh extends AbstractOutput
      */
     public function asm(): string
     {
-        return sprintf('0 PUSHDATA(32)[%s]', bin2hex($this->witnessScriptHash));
+        return sprintf('0 PUSHDATA(32)[%s]', bin2hex($this->output->witnessHash()));
     }
 
     /**
@@ -57,6 +51,6 @@ class P2wsh extends AbstractOutput
      */
     public function address(NetworkInterface $network = null): string
     {
-        return $this->network($network)->getAddressP2wsh($this->witnessScriptHash);
+        return $this->network($network)->getAddressP2wsh($this->output);
     }
 }

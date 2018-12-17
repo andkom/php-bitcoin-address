@@ -16,10 +16,11 @@
     "require": {
         "php": "^7.0",
         "stephenhill/base58": "^1.1",
-        "bitwasp/bech32": "^0.0.1"
+        "bitwasp/bech32": "^0.0.1",
+        "btccom/cashaddress": "^0.0.3"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=5.0"
+        "phpunit/phpunit": "^5.7"
     },
     "autoload": {
         "psr-4": {

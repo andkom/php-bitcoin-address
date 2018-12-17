@@ -18,6 +18,8 @@ A simple P2PK, P2PKH, P2SH, P2WPKH, P2WSH output script/address generator.
 
 - Bitcoin
 - Bitcoin Testnet
+- Bitcoin Gold
+- Bitcoin Cash
 - Litecoin
 - Litecoin Testnet
 - Dogecoin

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AndKom\Bitcoin\Address\Network;
 
+use AndKom\Bitcoin\Address\Output\OutputInterface;
+
 /**
  * Interface NetworkInterface
  * @package AndKom\Bitcoin\Address\Network
@@ -17,10 +19,10 @@ interface NetworkInterface
     public function getAddressP2pkh(string $hash): string;
 
     /**
-     * @param string $hash
+     * @param OutputInterface $output
      * @return string
      */
-    public function getAddressP2sh(string $hash): string;
+    public function getAddressP2sh(OutputInterface $output): string;
 
     /**
      * @param string $hash
@@ -29,8 +31,8 @@ interface NetworkInterface
     public function getAddressP2wpkh(string $hash): string;
 
     /**
-     * @param string $hash
+     * @param OutputInterface $output
      * @return string
      */
-    public function getAddressP2wsh(string $hash): string;
+    public function getAddressP2wsh(OutputInterface $output): string;
 }

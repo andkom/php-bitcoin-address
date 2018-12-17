@@ -12,8 +12,6 @@ use StephenHill\Base58;
  */
 class Utils
 {
-    const HASH160_LEN = 20;
-
     /**
      * @param string $data
      * @return string
@@ -49,15 +47,10 @@ class Utils
      */
     static public function base58address(string $hash, string $prefix = "\x00"): string
     {
-        if (static::HASH160_LEN != strlen($hash)) {
-            throw new Exception('Invalid hash length.');
-        }
-
-        $payload = $prefix . $hash;
+        $payload = $prefix . Validate::pubKeyHash($hash);
         $checksum = substr(static::hash256($payload), 0, 4);
         $address = $payload . $checksum;
         $encoded = (new Base58())->encode($address);
-
         return $encoded;
     }
 }

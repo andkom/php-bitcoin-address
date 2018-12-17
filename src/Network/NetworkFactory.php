@@ -11,6 +11,7 @@ use AndKom\Bitcoin\Address\Exception;
  * @package AndKom\Bitcoin\Address\Network
  * @method static NetworkInterface bitcoin()
  * @method static NetworkInterface bitcoinTestnet()
+ * @method static NetworkInterface bitcoinCash()
  * @method static NetworkInterface bitcoinGold()
  * @method static NetworkInterface litecoin()
  * @method static NetworkInterface litecoinTestnet()
@@ -30,6 +31,7 @@ class NetworkFactory
     static protected $networks = [
         'bitcoin',
         'bitcoinTestnet',
+        'bitcoinCash',
         'bitcoinGold',
         'litecoin',
         'litecoinTestnet',
