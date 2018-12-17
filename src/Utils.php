@@ -40,21 +40,6 @@ class Utils
     }
 
     /**
-     * @param string $hash
-     * @param string $prefix
-     * @return string
-     * @throws \Exception
-     */
-    static public function base58address(string $hash, string $prefix = "\x00"): string
-    {
-        $payload = $prefix . Validate::pubKeyHash($hash);
-        $checksum = substr(static::hash256($payload), 0, 4);
-        $address = $payload . $checksum;
-        $base58 = (new Base58())->encode($address);
-        return $base58;
-    }
-
-    /**
      * @param string $hex
      * @return string
      * @throws Exception
@@ -68,5 +53,48 @@ class Utils
         }
 
         return $bin;
+    }
+
+    /**
+     * @param string $hash
+     * @param string $prefix
+     * @return string
+     * @throws \Exception
+     */
+    static public function base58encode(string $hash, string $prefix = "\x00"): string
+    {
+        $payload = $prefix . Validate::pubKeyHash($hash);
+        $checksum = substr(static::hash256($payload), 0, 4);
+        $address = $payload . $checksum;
+        $base58 = (new Base58())->encode($address);
+        return $base58;
+    }
+
+    /**
+     * @param string $base58
+     * @return array
+     * @throws \Exception
+     */
+    static public function base58decode(string $base58): array
+    {
+        $address = (new Base58())->decode($base58);
+        $addressLen = strlen($address);
+
+        if (25 != $addressLen) {
+            throw new Exception(sprintf('Invalid address length: %d.', $addressLen));
+        }
+
+        $payload = substr($address, 0, -4);
+        $checksum = substr($address, -4);
+        $checksumCheck = substr(static::hash256($payload), 0, 4);
+
+        if ($checksum != $checksumCheck) {
+            throw new Exception('Invalid checksum.');
+        }
+
+        $prefix = $payload[0];
+        $hash = substr($payload, 1, 20);
+
+        return [$hash, $prefix];
     }
 }

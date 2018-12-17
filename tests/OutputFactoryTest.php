@@ -14,7 +14,7 @@ use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class P2wshTest
+ * Class OutputFactoryTest
  * @package AndKom\Bitcoin\Address\Tests
  */
 class OutputFactoryTest extends TestCase
