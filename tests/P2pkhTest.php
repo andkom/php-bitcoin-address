@@ -59,6 +59,14 @@ class P2pkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
+    public function testAddressBitcoinGold()
+    {
+        $this->assertEquals('GUXByHDZLvU4DnVH9imSFckt3HEQ5cFgE5', $this->getOutput()->address(NetworkFactory::bitcoinGold()));
+    }
+
+    /**
+     * @throws \AndKom\Bitcoin\Address\Exception
+     */
     public function testAddressLitecoin()
     {
         $this->assertEquals('LVuDpNCSSj6pQ7t9Pv6d6sUkLKoqDEVUnJ', $this->getOutput()->address(NetworkFactory::litecoin()));
