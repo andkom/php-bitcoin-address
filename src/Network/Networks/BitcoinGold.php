@@ -18,10 +18,10 @@ class BitcoinGold extends Bitcoin
     /**
      * @var string
      */
-    protected $prefixP2sh = "\x5a";
+    protected $prefixP2sh = "\x17";
 
     /**
      * @var null
      */
-    protected $prefixBech32 = null;
+    protected $prefixBech32 = 'btg';
 }
