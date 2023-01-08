@@ -13,6 +13,7 @@ use AndKom\Bitcoin\Address\Exception;
  * @method static NetworkInterface bitcoinTestnet()
  * @method static NetworkInterface bitcoinCash()
  * @method static NetworkInterface bitcoinGold()
+ * @method static NetworkInterface clams()
  * @method static NetworkInterface litecoin()
  * @method static NetworkInterface litecoinTestnet()
  * @method static NetworkInterface dogecoin()
@@ -33,6 +34,7 @@ class NetworkFactory
         'bitcoinTestnet',
         'bitcoinCash',
         'bitcoinGold',
+        'clams',
         'litecoin',
         'litecoinTestnet',
         'dogecoin',
