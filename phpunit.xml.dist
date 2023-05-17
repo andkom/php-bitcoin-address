@@ -2,6 +2,11 @@
 <phpunit bootstrap="vendor/autoload.php"
          colors="true"
          verbose="true">
+    <coverage>
+        <include>
+            <directory>src</directory>
+        </include>
+    </coverage>
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/</directory>

@@ -4,5 +4,5 @@ parameters:
         - src
         - tests
     excludePaths:
-        - tests/reports
+        - tests/_reports
     treatPhpDocTypesAsCertain: false

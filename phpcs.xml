@@ -8,4 +8,7 @@
 
     <rule ref="PSR12"/>
 
+    <exclude-pattern>tests/_reports</exclude-pattern>
+    <exclude-pattern>tests/_data</exclude-pattern>
+
 </ruleset>
