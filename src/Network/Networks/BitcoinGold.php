@@ -21,7 +21,7 @@ class BitcoinGold extends Bitcoin
     protected $prefixP2sh = "\x17";
 
     /**
-     * @var null
+     * @var ?string
      */
     protected $prefixBech32 = 'btg';
 }

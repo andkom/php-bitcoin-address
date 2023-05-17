@@ -34,7 +34,7 @@ class Bitcoin implements NetworkInterface
     protected $prefixP2sh = "\x05";
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $prefixBech32 = 'bc';
 
