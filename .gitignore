@@ -2,3 +2,4 @@
 .phpunit.*
 /vendor
 composer.lock
+tests/_reports/
