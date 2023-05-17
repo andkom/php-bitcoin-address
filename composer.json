@@ -33,5 +33,21 @@
         "psr-4": {
             "AndKom\\Bitcoin\\Address\\Tests\\": "tests/"
         }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ],
+        "lint": [
+            "phpcbf || true",
+            "phpcs || true",
+            "phpstan"
+        ]
     }
 }
