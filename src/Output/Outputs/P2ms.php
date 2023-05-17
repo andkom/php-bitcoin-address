@@ -35,7 +35,7 @@ class P2ms extends AbstractOutput
     /**
      * P2ms constructor.
      * @param int $m Number of signatures
-     * @param array $pubKeys
+     * @param string[] $pubKeys
      * @throws Exception
      */
     public function __construct(int $m, array $pubKeys)

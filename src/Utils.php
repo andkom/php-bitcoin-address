@@ -72,7 +72,7 @@ class Utils
 
     /**
      * @param string $base58
-     * @return array
+     * @return string[]
      * @throws \Exception
      */
     public static function base58decode(string $base58): array
