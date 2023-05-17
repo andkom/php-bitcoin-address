@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  */
 class BitcoinTest extends TestCase
 {
-    public function testDecodeP2PKH()
+    public function testDecodeP2PKH(): void
     {
         $this->assertInstanceOf(
             P2pkh::class,
@@ -25,7 +25,7 @@ class BitcoinTest extends TestCase
         );
     }
 
-    public function testDecodeP2SH()
+    public function testDecodeP2SH(): void
     {
         $this->assertInstanceOf(
             P2sh::class,
@@ -33,7 +33,7 @@ class BitcoinTest extends TestCase
         );
     }
 
-    public function testDecodeP2WPKH()
+    public function testDecodeP2WPKH(): void
     {
         $this->assertInstanceOf(
             P2wpkh::class,
@@ -41,7 +41,7 @@ class BitcoinTest extends TestCase
         );
     }
 
-    public function testDecodeP2WSH()
+    public function testDecodeP2WSH(): void
     {
         $this->assertInstanceOf(
             P2wsh::class,

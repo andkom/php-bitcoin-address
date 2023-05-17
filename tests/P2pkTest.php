@@ -26,7 +26,7 @@ class P2pkTest extends P2pkhTest
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testHex()
+    public function testHex(): void
     {
         $this->assertEquals(
             '210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac',
@@ -37,7 +37,7 @@ class P2pkTest extends P2pkhTest
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAsm()
+    public function testAsm(): void
     {
         $this->assertEquals(
             'PUSHDATA(33)[0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798] CHECKSIG',
@@ -48,7 +48,7 @@ class P2pkTest extends P2pkhTest
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testFromScript()
+    public function testFromScript(): void
     {
         $output = $this->getOutput();
         $this->assertEquals($output->script(), P2pk::fromScript($output->script())->script());

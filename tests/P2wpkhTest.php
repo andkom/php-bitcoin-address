@@ -28,7 +28,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testHex()
+    public function testHex(): void
     {
         $this->assertEquals(
             '0014751e76e8199196d454941c45d1b3a323f1433bd6',
@@ -39,7 +39,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAsm()
+    public function testAsm(): void
     {
         $this->assertEquals(
             '0 PUSHDATA(20)[751e76e8199196d454941c45d1b3a323f1433bd6]',
@@ -50,7 +50,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAddressBitcoin()
+    public function testAddressBitcoin(): void
     {
         $this->assertEquals(
             'bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4',
@@ -61,7 +61,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAddressBitcoinTestnet()
+    public function testAddressBitcoinTestnet(): void
     {
         $this->assertEquals(
             'tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx',
@@ -72,7 +72,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAddressLitecoin()
+    public function testAddressLitecoin(): void
     {
         $this->assertEquals(
             'ltc1qw508d6qejxtdg4y5r3zarvary0c5xw7kgmn4n9',
@@ -83,7 +83,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAddressLitecoinTestnet()
+    public function testAddressLitecoinTestnet(): void
     {
         $this->assertEquals(
             'tltc1qw508d6qejxtdg4y5r3zarvary0c5xw7klfsuq0',
@@ -94,7 +94,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAddressViacoin()
+    public function testAddressViacoin(): void
     {
         $this->assertEquals(
             'via1qw508d6qejxtdg4y5r3zarvary0c5xw7kxzdzsn',
@@ -105,7 +105,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testAddressViacoinTestnet()
+    public function testAddressViacoinTestnet(): void
     {
         $this->assertEquals(
             'tvia1qw508d6qejxtdg4y5r3zarvary0c5xw7k3swtre',
@@ -116,7 +116,7 @@ class P2wpkhTest extends TestCase
     /**
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    public function testFromScript()
+    public function testFromScript(): void
     {
         $output = $this->getOutput();
         $this->assertEquals($output->script(), P2wpkh::fromScript($output->script())->script());
