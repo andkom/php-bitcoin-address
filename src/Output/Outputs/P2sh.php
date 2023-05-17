@@ -18,7 +18,7 @@ use AndKom\Bitcoin\Address\Validate;
  */
 class P2sh extends AbstractOutput
 {
-    const SCRIPT_LEN = 23;
+    public const SCRIPT_LEN = 23;
 
     /**
      * @var string

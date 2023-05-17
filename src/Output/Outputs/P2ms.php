@@ -18,7 +18,7 @@ use AndKom\Bitcoin\Address\Validate;
  */
 class P2ms extends AbstractOutput
 {
-    const MIN_SCRIPT_LEN = 37;
+    public const MIN_SCRIPT_LEN = 37;
 
     /**
      * Number of signatures

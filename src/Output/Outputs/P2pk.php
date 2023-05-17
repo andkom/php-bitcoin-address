@@ -19,8 +19,8 @@ use AndKom\Bitcoin\Address\Validate;
  */
 class P2pk extends AbstractOutput
 {
-    const COMPRESSED_SCRIPT_LEN = 35;
-    const UNCOMPRESSED_SCRIPT_LEN = 67;
+    public const COMPRESSED_SCRIPT_LEN = 35;
+    public const UNCOMPRESSED_SCRIPT_LEN = 67;
 
     /**
      * @var string

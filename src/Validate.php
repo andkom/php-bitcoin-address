@@ -10,13 +10,13 @@ namespace AndKom\Bitcoin\Address;
  */
 class Validate
 {
-    const COMPRESSED_PUBKEY_LEN = 33;
-    const COMPRESSED_PUBKEY_PREFIXES = ["\x02", "\x03"];
-    const UNCOMPRESSED_PUBKEY_LEN = 65;
-    const UNCOMRPESSED_PUBKEY_PREFIX = "\04";
-    const PUBKEY_HASH_LEN = 20;
-    const SCRIPT_HASH_LEN = 20;
-    const WITNESS_HASH_LEN = 32;
+    public const COMPRESSED_PUBKEY_LEN = 33;
+    public const COMPRESSED_PUBKEY_PREFIXES = ["\x02", "\x03"];
+    public const UNCOMPRESSED_PUBKEY_LEN = 65;
+    public const UNCOMRPESSED_PUBKEY_PREFIX = "\04";
+    public const PUBKEY_HASH_LEN = 20;
+    public const SCRIPT_HASH_LEN = 20;
+    public const WITNESS_HASH_LEN = 32;
 
     /**
      * @param string $pubKey
