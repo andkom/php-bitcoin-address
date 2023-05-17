@@ -24,7 +24,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    static public function p2pk(string $pubKey): OutputInterface
+    public static function p2pk(string $pubKey): OutputInterface
     {
         return new P2pk($pubKey);
     }
@@ -34,7 +34,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    static public function p2pkh(string $pubKeyHash): OutputInterface
+    public static function p2pkh(string $pubKeyHash): OutputInterface
     {
         return new P2pkh($pubKeyHash);
     }
@@ -45,7 +45,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    static public function p2ms(int $m, array $pubKeys): OutputInterface
+    public static function p2ms(int $m, array $pubKeys): OutputInterface
     {
         return new P2ms($m, $pubKeys);
     }
@@ -55,7 +55,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    static public function p2sh(OutputInterface $output): OutputInterface
+    public static function p2sh(OutputInterface $output): OutputInterface
     {
         return new P2sh($output);
     }
@@ -65,7 +65,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    static public function p2wpkh(string $pubKeyHash): OutputInterface
+    public static function p2wpkh(string $pubKeyHash): OutputInterface
     {
         return new P2wpkh($pubKeyHash);
     }
@@ -75,7 +75,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws \AndKom\Bitcoin\Address\Exception
      */
-    static public function p2wsh(OutputInterface $output): OutputInterface
+    public static function p2wsh(OutputInterface $output): OutputInterface
     {
         return new P2wsh($output);
     }
@@ -85,7 +85,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromScript(string $script): OutputInterface
+    public static function fromScript(string $script): OutputInterface
     {
         $map = [
             P2pk::COMPRESSED_SCRIPT_LEN => P2pk::class,
@@ -114,7 +114,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromHex(string $hex): OutputInterface
+    public static function fromHex(string $hex): OutputInterface
     {
         return static::fromScript(Utils::hex2bin($hex));
     }

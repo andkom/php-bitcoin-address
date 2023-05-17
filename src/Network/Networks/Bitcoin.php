@@ -13,6 +13,7 @@ use AndKom\Bitcoin\Address\Output\Outputs\P2wpkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use AndKom\Bitcoin\Address\Utils;
 use AndKom\Bitcoin\Address\Validate;
+
 use function BitWasp\Bech32\decodeSegwit;
 use function BitWasp\Bech32\encodeSegwit;
 

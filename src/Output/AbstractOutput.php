@@ -53,7 +53,7 @@ abstract class AbstractOutput implements OutputInterface
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromHex(string $hex): OutputInterface
+    public static function fromHex(string $hex): OutputInterface
     {
         $script = hex2bin($hex);
 

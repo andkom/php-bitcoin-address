@@ -23,7 +23,7 @@ class Validate
      * @return string
      * @throws Exception
      */
-    static public function pubKey(string $pubKey): string
+    public static function pubKey(string $pubKey): string
     {
         $len = strlen($pubKey);
 
@@ -48,7 +48,7 @@ class Validate
      * @return string
      * @throws Exception
      */
-    static public function pubKeyHash(string $pubKeyHash): string
+    public static function pubKeyHash(string $pubKeyHash): string
     {
         if (static::PUBKEY_HASH_LEN != strlen($pubKeyHash)) {
             throw new Exception(sprintf('Invalid pubkey hash: %s.', bin2hex($pubKeyHash)));
@@ -62,7 +62,7 @@ class Validate
      * @return string
      * @throws Exception
      */
-    static public function scriptHash(string $scriptHash): string
+    public static function scriptHash(string $scriptHash): string
     {
         if (static::SCRIPT_HASH_LEN != strlen($scriptHash)) {
             throw new Exception(sprintf('Invalid script hash: %s.', bin2hex($scriptHash)));
@@ -76,7 +76,7 @@ class Validate
      * @return string
      * @throws Exception
      */
-    static public function witnessHash(string $witnessHash): string
+    public static function witnessHash(string $witnessHash): string
     {
         if (static::WITNESS_HASH_LEN != strlen($witnessHash)) {
             throw new Exception(sprintf('Invalid witness hash: %s.', bin2hex($witnessHash)));

@@ -103,7 +103,7 @@ class P2ms extends AbstractOutput
      * @param string $script
      * @throws Exception
      */
-    static public function validateScript(string $script)
+    public static function validateScript(string $script)
     {
         $scriptLen = strlen($script);
 
@@ -121,8 +121,10 @@ class P2ms extends AbstractOutput
         for ($i = 1, $c = 0; $i < $scriptLen - 2; $c++) {
             $pubKeyLen = ord($script[$i]);
 
-            if (Validate::COMPRESSED_PUBKEY_LEN != $pubKeyLen &&
-                Validate::UNCOMPRESSED_PUBKEY_LEN != $pubKeyLen) {
+            if (
+                Validate::COMPRESSED_PUBKEY_LEN != $pubKeyLen &&
+                Validate::UNCOMPRESSED_PUBKEY_LEN != $pubKeyLen
+            ) {
                 throw new Exception('Invalid pubkey length.');
             }
 
@@ -139,7 +141,7 @@ class P2ms extends AbstractOutput
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromScript(string $script): OutputInterface
+    public static function fromScript(string $script): OutputInterface
     {
         static::validateScript($script);
 

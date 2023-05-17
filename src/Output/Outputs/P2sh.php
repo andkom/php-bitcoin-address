@@ -69,15 +69,17 @@ class P2sh extends AbstractOutput
      * @param string $script
      * @throws Exception
      */
-    static public function validateScript(string $script)
+    public static function validateScript(string $script)
     {
         if (static::SCRIPT_LEN != strlen($script)) {
             throw new Exception('Invalid P2SH script length.');
         }
 
-        if (Op::HASH160 != $script[0] ||
+        if (
+            Op::HASH160 != $script[0] ||
             "\x14" != $script[1] ||
-            Op::EQUAL != $script[-1]) {
+            Op::EQUAL != $script[-1]
+        ) {
             throw new Exception('Invalid P2SH script format.');
         }
     }
@@ -87,7 +89,7 @@ class P2sh extends AbstractOutput
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromScript(string $script): OutputInterface
+    public static function fromScript(string $script): OutputInterface
     {
         static::validateScript($script);
 
