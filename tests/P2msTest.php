@@ -29,7 +29,10 @@ class P2msTest extends TestCase
      */
     public function testHex()
     {
-        $this->assertEquals('51210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f8179851ae', $this->getOutput()->hex());
+        $this->assertEquals(
+            '51210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f8179851ae',
+            $this->getOutput()->hex()
+        );
     }
 
     /**
@@ -37,7 +40,10 @@ class P2msTest extends TestCase
      */
     public function testAsm()
     {
-        $this->assertEquals('1 PUSHDATA(33)[0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798] 1 CHECKMULTISIG', $this->getOutput()->asm());
+        $this->assertEquals(
+            '1 PUSHDATA(33)[0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798] 1 CHECKMULTISIG',
+            $this->getOutput()->asm()
+        );
     }
 
     /**

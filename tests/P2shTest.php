@@ -32,7 +32,10 @@ class P2shTest extends TestCase
      */
     public function testHex()
     {
-        $this->assertEquals('a91483eebb7d79aa1d388e3b0ac65b98ac580c4da01a87', $this->getOutput()->hex());
+        $this->assertEquals(
+            'a91483eebb7d79aa1d388e3b0ac65b98ac580c4da01a87',
+            $this->getOutput()->hex()
+        );
     }
 
     /**
@@ -40,7 +43,10 @@ class P2shTest extends TestCase
      */
     public function testAsm()
     {
-        $this->assertEquals('HASH160 PUSHDATA(20)[83eebb7d79aa1d388e3b0ac65b98ac580c4da01a] EQUAL', $this->getOutput()->asm());
+        $this->assertEquals(
+            'HASH160 PUSHDATA(20)[83eebb7d79aa1d388e3b0ac65b98ac580c4da01a] EQUAL',
+            $this->getOutput()->asm()
+        );
     }
 
     /**
@@ -56,7 +62,10 @@ class P2shTest extends TestCase
      */
     public function testAddressBitcoinTestnet()
     {
-        $this->assertEquals('2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7', $this->getOutput()->address(NetworkFactory::bitcoinTestnet()));
+        $this->assertEquals(
+            '2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7',
+            $this->getOutput()->address(NetworkFactory::bitcoinTestnet())
+        );
     }
 
     /**
@@ -64,7 +73,10 @@ class P2shTest extends TestCase
      */
     public function testAddressBitcoinCash()
     {
-        $this->assertEquals('bitcoincash:pzp7awma0x4p6wyw8v9vvkuc43vqcndqrg9umkmd8g', $this->getOutput()->address(NetworkFactory::bitcoinCash()));
+        $this->assertEquals(
+            'bitcoincash:pzp7awma0x4p6wyw8v9vvkuc43vqcndqrg9umkmd8g',
+            $this->getOutput()->address(NetworkFactory::bitcoinCash())
+        );
     }
 
     /**
@@ -72,7 +84,10 @@ class P2shTest extends TestCase
      */
     public function testAddressBitcoinGold()
     {
-        $this->assertEquals('dRSt8KXceu9YfGjDmCAAKNdAVRXbFQWRxF', $this->getOutput()->address(NetworkFactory::bitcoinGold()));
+        $this->assertEquals(
+            'dRSt8KXceu9YfGjDmCAAKNdAVRXbFQWRxF',
+            $this->getOutput()->address(NetworkFactory::bitcoinGold())
+        );
     }
 
     /**
@@ -80,7 +95,10 @@ class P2shTest extends TestCase
      */
     public function testAddressLitecoin()
     {
-        $this->assertEquals('MKvkjyc6FgcVww9knQqQvMjhKFDrpERUsa', $this->getOutput()->address(NetworkFactory::litecoin()));
+        $this->assertEquals(
+            'MKvkjyc6FgcVww9knQqQvMjhKFDrpERUsa',
+            $this->getOutput()->address(NetworkFactory::litecoin())
+        );
     }
 
     /**
@@ -88,7 +106,10 @@ class P2shTest extends TestCase
      */
     public function testAddressLitecoinTestnet()
     {
-        $this->assertEquals('QYdacqzPw8KWVQGSymVxoMuzMHHQYBayi6', $this->getOutput()->address(NetworkFactory::litecoinTestnet()));
+        $this->assertEquals(
+            'QYdacqzPw8KWVQGSymVxoMuzMHHQYBayi6',
+            $this->getOutput()->address(NetworkFactory::litecoinTestnet())
+        );
     }
 
     /**
@@ -96,7 +117,10 @@ class P2shTest extends TestCase
      */
     public function testAddressDogecoin()
     {
-        $this->assertEquals('A4TsAwG2Nddy3oFL6fWVLr7fh81SuuSoLQ', $this->getOutput()->address(NetworkFactory::dogecoin()));
+        $this->assertEquals(
+            'A4TsAwG2Nddy3oFL6fWVLr7fh81SuuSoLQ',
+            $this->getOutput()->address(NetworkFactory::dogecoin())
+        );
     }
 
     /**
@@ -104,7 +128,10 @@ class P2shTest extends TestCase
      */
     public function testAddressDogecoinTestnet()
     {
-        $this->assertEquals('2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7', $this->getOutput()->address(NetworkFactory::dogecoinTestnet()));
+        $this->assertEquals(
+            '2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7',
+            $this->getOutput()->address(NetworkFactory::dogecoinTestnet())
+        );
     }
 
     /**
@@ -112,7 +139,10 @@ class P2shTest extends TestCase
      */
     public function testAddressViacoin()
     {
-        $this->assertEquals('EVBW18YCBcjc3ZnHNHAzgE7KcfqpgPjScU', $this->getOutput()->address(NetworkFactory::viacoin()));
+        $this->assertEquals(
+            'EVBW18YCBcjc3ZnHNHAzgE7KcfqpgPjScU',
+            $this->getOutput()->address(NetworkFactory::viacoin())
+        );
     }
 
     /**
@@ -120,7 +150,10 @@ class P2shTest extends TestCase
      */
     public function testAddressViacoinTestnet()
     {
-        $this->assertEquals('2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7', $this->getOutput()->address(NetworkFactory::viacoinTestnet()));
+        $this->assertEquals(
+            '2N5GpVq89v2GRMDWQMfTwifUZCtqaczC6Y7',
+            $this->getOutput()->address(NetworkFactory::viacoinTestnet())
+        );
     }
 
     /**
@@ -128,7 +161,10 @@ class P2shTest extends TestCase
      */
     public function testAddressDash()
     {
-        $this->assertEquals('7eSFGHUJ7Yri9CQox9WaS6Uwv6TngFDeEa', $this->getOutput()->address(NetworkFactory::dash()));
+        $this->assertEquals(
+            '7eSFGHUJ7Yri9CQox9WaS6Uwv6TngFDeEa',
+            $this->getOutput()->address(NetworkFactory::dash())
+        );
     }
 
     /**
@@ -136,7 +172,10 @@ class P2shTest extends TestCase
      */
     public function testAddressDashTestnet()
     {
-        $this->assertEquals('8rT4DcNAF6FLbVq52QWXtUJJocEcmYMNRG', $this->getOutput()->address(NetworkFactory::dashTestnet()));
+        $this->assertEquals(
+            '8rT4DcNAF6FLbVq52QWXtUJJocEcmYMNRG',
+            $this->getOutput()->address(NetworkFactory::dashTestnet())
+        );
     }
 
     /**
@@ -144,7 +183,10 @@ class P2shTest extends TestCase
      */
     public function testAddressZcash()
     {
-        $this->assertEquals('t3WbDSRcGGtYfk4vkcxfCEXbDFCpVZxhxKh', $this->getOutput()->address(NetworkFactory::zcash()));
+        $this->assertEquals(
+            't3WbDSRcGGtYfk4vkcxfCEXbDFCpVZxhxKh',
+            $this->getOutput()->address(NetworkFactory::zcash())
+        );
     }
 
     /**

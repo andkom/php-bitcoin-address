@@ -28,7 +28,10 @@ class P2pkTest extends P2pkhTest
      */
     public function testHex()
     {
-        $this->assertEquals('210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac', $this->getOutput()->hex());
+        $this->assertEquals(
+            '210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac',
+            $this->getOutput()->hex()
+        );
     }
 
     /**
@@ -36,7 +39,10 @@ class P2pkTest extends P2pkhTest
      */
     public function testAsm()
     {
-        $this->assertEquals('PUSHDATA(33)[0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798] CHECKSIG', $this->getOutput()->asm());
+        $this->assertEquals(
+            'PUSHDATA(33)[0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798] CHECKSIG',
+            $this->getOutput()->asm()
+        );
     }
 
     /**
