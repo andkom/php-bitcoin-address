@@ -22,7 +22,7 @@ class P2pkhTest extends TestCase
      */
     protected function getOutput(): OutputInterface
     {
-        return OutputFactory::p2pkh(hex2bin('751e76e8199196d454941c45d1b3a323f1433bd6'));
+        return OutputFactory::p2pkh(hex2bin('751e76e8199196d454941c45d1b3a323f1433bd6') ?: '');
     }
 
     /**

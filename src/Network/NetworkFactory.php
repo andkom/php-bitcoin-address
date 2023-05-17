@@ -81,7 +81,13 @@ class NetworkFactory
 
         $class = 'AndKom\\Bitcoin\\Address\\Network\\Networks\\' . ucfirst($name);
 
-        return new $class(...$arguments);
+        $network = new $class(...$arguments);
+
+        if (! $network instanceof NetworkInterface) {
+            throw new Exception("{$class} was not a NetworkInterface");
+        }
+
+        return $network;
     }
 
     /**

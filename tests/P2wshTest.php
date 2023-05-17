@@ -23,7 +23,7 @@ class P2wshTest extends TestCase
     protected function getOutput(): OutputInterface
     {
         $factory = new OutputFactory();
-        $p2ms = $factory->p2ms(1, [hex2bin('0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798')]);
+        $p2ms = $factory->p2ms(1, [hex2bin('0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798') ?: '']);
         return $factory->p2wsh($p2ms);
     }
 
