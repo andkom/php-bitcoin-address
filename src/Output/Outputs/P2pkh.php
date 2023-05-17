@@ -92,6 +92,6 @@ class P2pkh extends AbstractOutput
 
         $pubKeyHash = substr($script, 3, 20);
 
-        return new static($pubKeyHash);
+        return new P2pkh($pubKeyHash);
     }
 }

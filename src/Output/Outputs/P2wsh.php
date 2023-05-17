@@ -92,6 +92,6 @@ class P2wsh extends AbstractOutput
 
         $witnessHash = substr($script, 2, 32);
 
-        return new static($witnessHash);
+        return new P2wsh($witnessHash);
     }
 }

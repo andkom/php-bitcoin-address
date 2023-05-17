@@ -93,6 +93,6 @@ class P2pk extends AbstractOutput
 
         $pubKey = substr($script, 1, -1);
 
-        return new static($pubKey);
+        return new P2pk($pubKey);
     }
 }

@@ -102,6 +102,6 @@ class NetworkFactory
      */
     public static function __callStatic($name, $arguments)
     {
-        return (new static())->createNetwork($name, $arguments);
+        return (new NetworkFactory())->createNetwork($name, $arguments);
     }
 }

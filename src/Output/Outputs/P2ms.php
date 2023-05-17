@@ -155,6 +155,6 @@ class P2ms extends AbstractOutput
             $i += $pubKeyLen + 1;
         }
 
-        return new static($m, $pubKeys);
+        return new P2ms($m, $pubKeys);
     }
 }

@@ -95,6 +95,6 @@ class P2sh extends AbstractOutput
 
         $scriptHash = substr($script, 2, -1);
 
-        return new static($scriptHash);
+        return new P2sh($scriptHash);
     }
 }
