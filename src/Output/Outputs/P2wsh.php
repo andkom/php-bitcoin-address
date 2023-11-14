@@ -26,8 +26,8 @@ class P2wsh extends AbstractOutput
 
     /**
      * P2wsh constructor.
-     * @param OutputInterface|string $witnessHash
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @param string|OutputInterface $witnessHash
+     * @throws Exception
      */
     public function __construct($witnessHash)
     {

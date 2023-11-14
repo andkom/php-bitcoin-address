@@ -28,7 +28,7 @@ class P2sh extends AbstractOutput
     /**
      * P2sh constructor.
      * @param OutputInterface|string $scriptHash
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function __construct($scriptHash)
     {

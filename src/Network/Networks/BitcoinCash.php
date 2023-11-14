@@ -9,6 +9,8 @@ use AndKom\Bitcoin\Address\Output\OutputInterface;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2sh;
 use CashAddr\CashAddress;
+use CashAddr\Exception\Base32Exception;
+use CashAddr\Exception\CashAddressException;
 
 /**
  * Class BitcoinCash
@@ -34,8 +36,8 @@ class BitcoinCash extends Bitcoin
     /**
      * @param string $pubKeyHash
      * @return string
-     * @throws \CashAddr\Exception\Base32Exception
-     * @throws \CashAddr\Exception\CashAddressException
+     * @throws Base32Exception
+     * @throws CashAddressException
      */
     public function getAddressP2pkh(string $pubKeyHash): string
     {
@@ -45,8 +47,8 @@ class BitcoinCash extends Bitcoin
     /**
      * @param string $scriptHash
      * @return string
-     * @throws \CashAddr\Exception\Base32Exception
-     * @throws \CashAddr\Exception\CashAddressException
+     * @throws Base32Exception
+     * @throws CashAddressException
      */
     public function getAddressP2sh(string $scriptHash): string
     {
@@ -57,8 +59,8 @@ class BitcoinCash extends Bitcoin
      * @param string $address
      * @return OutputInterface
      * @throws Exception
-     * @throws \CashAddr\Exception\Base32Exception
-     * @throws \CashAddr\Exception\CashAddressException
+     * @throws Base32Exception
+     * @throws CashAddressException
      */
     public function decodeAddress(string $address): OutputInterface
     {

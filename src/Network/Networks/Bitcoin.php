@@ -13,6 +13,7 @@ use AndKom\Bitcoin\Address\Output\Outputs\P2wpkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use AndKom\Bitcoin\Address\Utils;
 use AndKom\Bitcoin\Address\Validate;
+use BitWasp\Bech32\Exception\Bech32Exception;
 use function BitWasp\Bech32\decodeSegwit;
 use function BitWasp\Bech32\encodeSegwit;
 
@@ -74,7 +75,7 @@ class Bitcoin implements NetworkInterface
      * @param string $pubKeyHash
      * @return string
      * @throws Exception
-     * @throws \BitWasp\Bech32\Exception\Bech32Exception
+     * @throws Bech32Exception
      */
     public function getAddressP2wpkh(string $pubKeyHash): string
     {
@@ -85,7 +86,7 @@ class Bitcoin implements NetworkInterface
      * @param string $witnessHash
      * @return string
      * @throws Exception
-     * @throws \BitWasp\Bech32\Exception\Bech32Exception
+     * @throws Bech32Exception
      */
     public function getAddressP2wsh(string $witnessHash): string
     {
@@ -96,7 +97,7 @@ class Bitcoin implements NetworkInterface
      * @param string $address
      * @return OutputInterface
      * @throws \Exception
-     * @throws \BitWasp\Bech32\Exception\Bech32Exception
+     * @throws Bech32Exception
      */
     public function decodeAddress(string $address): OutputInterface
     {

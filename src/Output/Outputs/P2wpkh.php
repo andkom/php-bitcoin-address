@@ -27,7 +27,7 @@ class P2wpkh extends AbstractOutput
     /**
      * P2wpkh constructor.
      * @param string $pubKeyHash
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function __construct(string $pubKeyHash)
     {

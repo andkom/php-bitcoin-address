@@ -30,7 +30,7 @@ class P2pk extends AbstractOutput
     /**
      * P2pk constructor.
      * @param string $pubKey
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function __construct(string $pubKey)
     {
