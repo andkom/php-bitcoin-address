@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndKom\Bitcoin\Address\Tests;
 
+use AndKom\Bitcoin\Address\Exception;
 use AndKom\Bitcoin\Address\Output\OutputFactory;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pk;
@@ -16,7 +17,7 @@ class P2pkTest extends P2pkhTest
 {
     /**
      * @return OutputInterface
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     protected function getOutput(): OutputInterface
     {
@@ -24,7 +25,7 @@ class P2pkTest extends P2pkhTest
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testHex()
     {
@@ -32,7 +33,7 @@ class P2pkTest extends P2pkhTest
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAsm()
     {
@@ -40,7 +41,7 @@ class P2pkTest extends P2pkhTest
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testFromScript()
     {

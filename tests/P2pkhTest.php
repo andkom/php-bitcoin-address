@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndKom\Bitcoin\Address\Tests;
 
+use AndKom\Bitcoin\Address\Exception;
 use AndKom\Bitcoin\Address\Network\NetworkFactory;
 use AndKom\Bitcoin\Address\Output\OutputFactory;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
@@ -18,7 +19,7 @@ class P2pkhTest extends TestCase
 {
     /**
      * @return OutputInterface
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     protected function getOutput(): OutputInterface
     {
@@ -26,7 +27,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testHex()
     {
@@ -34,7 +35,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAsm()
     {
@@ -42,7 +43,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressBitcoin()
     {
@@ -50,7 +51,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressBitcoinTestnet()
     {
@@ -58,7 +59,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressBitcoinCash()
     {
@@ -66,7 +67,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressBitcoinGold()
     {
@@ -74,7 +75,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressLitecoin()
     {
@@ -82,7 +83,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressLitecoinTestnet()
     {
@@ -90,7 +91,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressDogecoin()
     {
@@ -98,7 +99,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressDogecoinTestnet()
     {
@@ -106,7 +107,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressViacoin()
     {
@@ -114,7 +115,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressViacoinTestnet()
     {
@@ -122,7 +123,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressDash()
     {
@@ -130,7 +131,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressDashTestnet()
     {
@@ -138,7 +139,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testAddressZcash()
     {
@@ -146,7 +147,7 @@ class P2pkhTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testFromScript()
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndKom\Bitcoin\Address\Tests;
 
+use AndKom\Bitcoin\Address\Exception;
 use AndKom\Bitcoin\Address\Output\OutputFactory;
 use AndKom\Bitcoin\Address\Output\Outputs\P2ms;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pk;
@@ -20,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 class OutputFactoryTest extends TestCase
 {
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testFromHexP2PK()
     {
@@ -29,7 +30,7 @@ class OutputFactoryTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testFromHexP2PKH()
     {
@@ -38,7 +39,7 @@ class OutputFactoryTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testFromHexP2MS()
     {
@@ -47,7 +48,7 @@ class OutputFactoryTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testFromHexP2SH()
     {
@@ -56,7 +57,7 @@ class OutputFactoryTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testFromHexP2WPKH()
     {
@@ -65,7 +66,7 @@ class OutputFactoryTest extends TestCase
     }
 
     /**
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     public function testFromHexP2WSH()
     {
