@@ -32,7 +32,7 @@ class TaprootTest extends TestCase
 
         foreach ($pubKeys as $pubKey => $address) {
             $this->assertEquals(
-                OutputFactory::p2tr(Taproot::construct(hex2bin($pubKey)))->address($network),
+                OutputFactory::p2tr(Taproot::construct(hex2bin($pubKey) ?: ''))->address($network),
                 $address
             );
         }

@@ -25,7 +25,7 @@ class P2trTest extends TestCase
     protected function getOutput(): OutputInterface
     {
         $taprootPubKey = Taproot::construct(
-            hex2bin('03cc8a4bc64d897bddc5fbc2f670f7a8ba0b386779106cf1223c6fc5d7cd6fc115')
+            hex2bin('03cc8a4bc64d897bddc5fbc2f670f7a8ba0b386779106cf1223c6fc5d7cd6fc115') ?: ''
         );
         return OutputFactory::p2tr($taprootPubKey);
     }
