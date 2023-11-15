@@ -16,7 +16,7 @@ use Mdanter\Ecc\Primitives\CurveFpInterface;
 class Point extends \Mdanter\Ecc\Primitives\Point
 {
     /**
-     * @return $this
+     * @return Point
      * @throws Exception
      */
     public function liftX(): self
