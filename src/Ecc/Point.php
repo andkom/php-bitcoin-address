@@ -54,7 +54,7 @@ class Point extends \Mdanter\Ecc\Primitives\Point
                 $c,
                 $adapter->powmod(
                     $y,
-                    gmp_init(2),
+                    gmp_init(2, 10),
                     $curve->getPrime()
                 )
             ) !== 0) {
