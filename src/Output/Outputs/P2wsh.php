@@ -46,7 +46,15 @@ class P2wsh extends AbstractOutput
     {
         return $this->witnessHash;
     }
-    
+
+    /**
+     * @return string
+     */
+    public function type(): string
+    {
+        return 'p2wsh';
+    }
+
     /**
      * @return string
      */

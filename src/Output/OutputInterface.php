@@ -16,6 +16,11 @@ interface OutputInterface
     /**
      * @return string
      */
+    public function type(): string;
+
+    /**
+     * @return string
+     */
     public function script(): string;
 
     /**

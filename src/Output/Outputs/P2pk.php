@@ -48,6 +48,14 @@ class P2pk extends AbstractOutput
     /**
      * @return string
      */
+    public function type(): string
+    {
+        return 'p2pk';
+    }
+
+    /**
+     * @return string
+     */
     public function script(): string
     {
         return chr(strlen($this->pubKey)) . $this->pubKey . Op::CHECKSIG;

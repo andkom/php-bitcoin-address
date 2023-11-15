@@ -50,6 +50,14 @@ class P2sh extends AbstractOutput
     /**
      * @return string
      */
+    public function type(): string
+    {
+        return 'p2sh';
+    }
+
+    /**
+     * @return string
+     */
     public function script(): string
     {
         return Op::HASH160 . "\x14" . $this->scriptHash . Op::EQUAL;

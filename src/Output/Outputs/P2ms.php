@@ -77,6 +77,14 @@ class P2ms extends AbstractOutput
     /**
      * @return string
      */
+    public function type(): string
+    {
+        return 'p2ms';
+    }
+
+    /**
+     * @return string
+     */
     public function script(): string
     {
         $script = chr(0x50 + $this->m);

@@ -44,6 +44,14 @@ class P2tr extends AbstractOutput
     /**
      * @return string
      */
+    public function type(): string
+    {
+        return 'p2tr';
+    }
+
+    /**
+     * @return string
+     */
     public function script(): string
     {
         return static::WITNESS_VERSION . "\x20" . $this->taprootPubKey;
