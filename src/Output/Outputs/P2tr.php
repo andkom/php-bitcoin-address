@@ -16,8 +16,8 @@ use AndKom\Bitcoin\Address\Output\OutputInterface;
  */
 class P2tr extends AbstractOutput
 {
-    const SCRIPT_LEN = 34;
-    const WITNESS_VERSION = "\x51";
+    public const SCRIPT_LEN = 34;
+    public const WITNESS_VERSION = "\x51";
 
     /**
      * @var string

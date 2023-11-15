@@ -28,8 +28,8 @@ use const BrooksYang\Bech32m\BECH32M;
  */
 abstract class BitcoinAbstract implements NetworkInterface
 {
-    const VERSION_SEGWIT = 0;
-    const VERSION_TAPROOT = 1;
+    public const VERSION_SEGWIT = 0;
+    public const VERSION_TAPROOT = 1;
 
     /**
      * @var string
