@@ -14,7 +14,7 @@ use AndKom\Bitcoin\Address\Validate;
 
 /**
  * Class P2pk
- * Pay-To-PubKey
+ * Pay-To-PubKey output.
  * @package AndKom\Bitcoin\Address\Output\Outputs
  */
 class P2pk extends AbstractOutput

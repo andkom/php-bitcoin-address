@@ -97,4 +97,15 @@ class Utils
 
         return [$hash, $prefix];
     }
+
+    /**
+     * @param string $tag
+     * @param string $data
+     * @return string
+     */
+    static public function taggedHash(string $tag, string $data): string
+    {
+        $tagHash = static::sha256($tag);
+        return static::sha256($tagHash . $tagHash . $data);
+    }
 }

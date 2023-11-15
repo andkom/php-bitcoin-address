@@ -15,9 +15,11 @@
     ],
     "require": {
         "php": ">=7.1",
+        "ext-gmp": "*",
+        "btccom/cashaddress": "^0.0.3",
+        "brooksyang/bech32m": "^1.0",
         "stephenhill/base58": "^1.1",
-        "bitwasp/bech32": "^0.0.1",
-        "btccom/cashaddress": "^0.0.3"
+        "shanecurran/phpecc": "^0.0.1"
     },
     "require-dev": {
         "phpunit/phpunit": ">=5.7"

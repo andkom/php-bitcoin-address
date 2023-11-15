@@ -19,9 +19,4 @@ class DogecoinTestnet extends Dogecoin
      * @var string
      */
     protected $prefixP2sh = "\xc4";
-
-    /**
-     * @var null
-     */
-    protected $prefixBech32 = null;
 }

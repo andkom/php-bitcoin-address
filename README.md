@@ -90,6 +90,13 @@ $p2wsh = $factory->p2wsh($p2ms);
 $address = $factory->p2sh($p2wsh)->address();
 ```
 
+Generate a P2TR address:
+
+```php
+$taprootPubKey = Taproot::construct($pubKey);
+$address = OutputFactory::p2tr($taprootPubKey)->address();
+```
+
 Generate an address from an output script:
 
 ```php

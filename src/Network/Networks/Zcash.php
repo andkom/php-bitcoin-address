@@ -8,7 +8,7 @@ namespace AndKom\Bitcoin\Address\Network\Networks;
  * Class Zcash
  * @package AndKom\Bitcoin\Address\Network\Networks
  */
-class Zcash extends Bitcoin
+class Zcash extends BitcoinAbstract
 {
     /**
      * @var string
@@ -19,9 +19,4 @@ class Zcash extends Bitcoin
      * @var string
      */
     protected $prefixP2sh = "\x1c\xbd";
-
-    /**
-     * @var null
-     */
-    protected $prefixBech32 = null;
 }

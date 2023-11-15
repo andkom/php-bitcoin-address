@@ -8,7 +8,7 @@ namespace AndKom\Bitcoin\Address\Network\Networks;
  * Class Dogecoin
  * @package AndKom\Bitcoin\Address\Network\Networks
  */
-class Dogecoin extends Bitcoin
+class Dogecoin extends BitcoinAbstract
 {
     /**
      * @var string
@@ -19,9 +19,4 @@ class Dogecoin extends Bitcoin
      * @var string
      */
     protected $prefixP2sh = "\x16";
-
-    /**
-     * @var null
-     */
-    protected $prefixBech32 = null;
 }

@@ -16,7 +16,7 @@ use CashAddr\Exception\CashAddressException;
  * Class BitcoinCash
  * @package AndKom\Bitcoin\Address\Network\Networks
  */
-class BitcoinCash extends Bitcoin
+class BitcoinCash extends BitcoinAbstract
 {
     /**
      * @var string
@@ -27,11 +27,6 @@ class BitcoinCash extends Bitcoin
      * @var string
      */
     protected $prefixP2sh = 'bitcoincash';
-
-    /**
-     * @var string
-     */
-    protected $prefixBech32 = null;
 
     /**
      * @param string $pubKeyHash

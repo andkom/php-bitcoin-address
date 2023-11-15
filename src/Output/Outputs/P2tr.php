@@ -7,36 +7,29 @@ namespace AndKom\Bitcoin\Address\Output\Outputs;
 use AndKom\Bitcoin\Address\Exception;
 use AndKom\Bitcoin\Address\Network\NetworkInterface;
 use AndKom\Bitcoin\Address\Output\AbstractOutput;
-use AndKom\Bitcoin\Address\Output\Op;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
-use AndKom\Bitcoin\Address\Validate;
 
 /**
- * Class P2sh
- * Pay-To-ScriptHash output.
+ * Class P2tr
+ * Pay-To-Taproot output.
  * @package AndKom\Bitcoin\Address\Output\Outputs
  */
-class P2sh extends AbstractOutput
+class P2tr extends AbstractOutput
 {
-    const SCRIPT_LEN = 23;
+    const SCRIPT_LEN = 34;
 
     /**
      * @var string
      */
-    protected $scriptHash;
+    protected $taprootPubKey;
 
     /**
-     * P2sh constructor.
-     * @param OutputInterface|string $scriptHash
-     * @throws Exception
+     * P2pkh constructor.
+     * @param string $taprootPubKey
      */
-    public function __construct($scriptHash)
+    public function __construct(string $taprootPubKey)
     {
-        if ($scriptHash instanceof OutputInterface) {
-            $scriptHash = $scriptHash->hash();
-        }
-
-        $this->scriptHash = Validate::scriptHash($scriptHash);
+        $this->taprootPubKey = $taprootPubKey;
     }
 
     /**
@@ -44,7 +37,7 @@ class P2sh extends AbstractOutput
      */
     public function script(): string
     {
-        return Op::HASH160 . "\x14" . $this->scriptHash . Op::EQUAL;
+        return "\x51\x20" . $this->taprootPubKey;
     }
 
     /**
@@ -52,17 +45,16 @@ class P2sh extends AbstractOutput
      */
     public function asm(): string
     {
-        return sprintf('HASH160 PUSHDATA(20)[%s] EQUAL', bin2hex($this->scriptHash));
+        return sprintf('1 PUSHDATA(32)[%s]', bin2hex($this->taprootPubKey));
     }
 
     /**
-     * @return string
      * @param NetworkInterface|null $network
-     * @throws \Exception
+     * @return string
      */
     public function address(NetworkInterface $network = null): string
     {
-        return $this->network($network)->getAddressP2sh($this->scriptHash);
+        return $this->network($network)->getAddressP2tr($this->taprootPubKey);
     }
 
     /**
@@ -72,13 +64,12 @@ class P2sh extends AbstractOutput
     static public function validateScript(string $script)
     {
         if (static::SCRIPT_LEN != strlen($script)) {
-            throw new Exception('Invalid P2SH script length.');
+            throw new Exception('Invalid P2TR script length.');
         }
 
-        if (Op::HASH160 != $script[0] ||
-            "\x14" != $script[1] ||
-            Op::EQUAL != $script[-1]) {
-            throw new Exception('Invalid P2SH script format.');
+        if ("\x51" != $script[0] ||
+            "\x20" != $script[1]) {
+            throw new Exception('Invalid P2TR script format.');
         }
     }
 
@@ -91,8 +82,8 @@ class P2sh extends AbstractOutput
     {
         static::validateScript($script);
 
-        $scriptHash = substr($script, 2, -1);
+        $taprootPubKey = substr($script, 2, 32);
 
-        return new static($scriptHash);
+        return new static($taprootPubKey);
     }
 }

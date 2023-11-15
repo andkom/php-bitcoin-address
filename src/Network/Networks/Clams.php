@@ -8,7 +8,7 @@ namespace AndKom\Bitcoin\Address\Network\Networks;
  * Class Clams
  * @package AndKom\Bitcoin\Address\Network\Networks
  */
-class Clams extends Bitcoin
+class Clams extends BitcoinAbstract
 {
     /**
      * @var string
@@ -19,9 +19,4 @@ class Clams extends Bitcoin
      * @var string
      */
     protected $prefixP2sh = "\x0D";
-
-    /**
-     * @var string
-     */
-    protected $prefixBech32 = null;
 }

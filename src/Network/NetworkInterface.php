@@ -37,6 +37,12 @@ interface NetworkInterface
     public function getAddressP2wsh(string $witnessHash): string;
 
     /**
+     * @param string $taprootPubKey
+     * @return string
+     */
+    public function getAddressP2tr(string $taprootPubKey): string;
+
+    /**
      * @param string $address
      * @return OutputInterface
      */

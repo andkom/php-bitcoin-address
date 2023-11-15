@@ -9,6 +9,7 @@ use AndKom\Bitcoin\Address\Output\Outputs\P2ms;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pk;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2sh;
+use AndKom\Bitcoin\Address\Output\Outputs\P2tr;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wpkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use AndKom\Bitcoin\Address\Utils;
@@ -22,7 +23,7 @@ class OutputFactory
     /**
      * @param string $pubKey
      * @return OutputInterface
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     static public function p2pk(string $pubKey): OutputInterface
     {
@@ -32,7 +33,7 @@ class OutputFactory
     /**
      * @param string $pubKeyHash
      * @return OutputInterface
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     static public function p2pkh(string $pubKeyHash): OutputInterface
     {
@@ -43,7 +44,7 @@ class OutputFactory
      * @param int $m
      * @param array $pubKeys
      * @return OutputInterface
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     static public function p2ms(int $m, array $pubKeys): OutputInterface
     {
@@ -53,7 +54,7 @@ class OutputFactory
     /**
      * @param OutputInterface $output
      * @return OutputInterface
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     static public function p2sh(OutputInterface $output): OutputInterface
     {
@@ -63,7 +64,7 @@ class OutputFactory
     /**
      * @param string $pubKeyHash
      * @return OutputInterface
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     static public function p2wpkh(string $pubKeyHash): OutputInterface
     {
@@ -73,11 +74,20 @@ class OutputFactory
     /**
      * @param OutputInterface $output
      * @return OutputInterface
-     * @throws \AndKom\Bitcoin\Address\Exception
+     * @throws Exception
      */
     static public function p2wsh(OutputInterface $output): OutputInterface
     {
         return new P2wsh($output);
+    }
+
+    /**
+     * @param string $taprootPubKey
+     * @return OutputInterface
+     */
+    static public function p2tr(string $taprootPubKey): OutputInterface
+    {
+        return new P2tr($taprootPubKey);
     }
 
     /**
