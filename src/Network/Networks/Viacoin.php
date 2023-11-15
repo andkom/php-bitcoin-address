@@ -26,7 +26,7 @@ class Viacoin extends Bitcoin
     protected $prefixBech32 = 'via';
 
     /**
-     * @var bool 
+     * @var bool
      */
     protected $hasTaproot = false;
 }

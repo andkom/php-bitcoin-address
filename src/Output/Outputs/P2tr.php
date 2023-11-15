@@ -78,14 +78,16 @@ class P2tr extends AbstractOutput
      * @param string $script
      * @throws Exception
      */
-    static public function validateScript(string $script)
+    public static function validateScript(string $script)
     {
         if (static::SCRIPT_LEN != strlen($script)) {
             throw new Exception('Invalid P2TR script length.');
         }
 
-        if (static::WITNESS_VERSION != $script[0] ||
-            "\x20" != $script[1]) {
+        if (
+            static::WITNESS_VERSION != $script[0] ||
+            "\x20" != $script[1]
+        ) {
             throw new Exception('Invalid P2TR script format.');
         }
     }
@@ -95,7 +97,7 @@ class P2tr extends AbstractOutput
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromScript(string $script): OutputInterface
+    public static function fromScript(string $script): OutputInterface
     {
         static::validateScript($script);
 

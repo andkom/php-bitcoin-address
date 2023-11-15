@@ -50,24 +50,28 @@ class Point extends \Mdanter\Ecc\Primitives\Point
             $curve->getPrime()
         );
 
-        if ($adapter->cmp(
+        if (
+            $adapter->cmp(
                 $c,
                 $adapter->powmod(
                     $y,
                     gmp_init(2, 10),
                     $curve->getPrime()
                 )
-            ) !== 0) {
+            ) !== 0
+        ) {
             throw new Exception('C is not equal to point Y^2.');
         }
 
-        if ($adapter->cmp(
+        if (
+            $adapter->cmp(
                 $adapter->mod(
                     $y,
                     gmp_init(2, 10)
                 ),
                 gmp_init(0, 10)
-            ) === 0) {
+            ) === 0
+        ) {
             $point = new Point($adapter, $curve, $x, $y);
         } else {
             $point = new Point($adapter, $curve, $x, $adapter->sub($curve->getPrime(), $y));

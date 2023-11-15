@@ -54,17 +54,17 @@ interface OutputInterface
      * @throws Exception
      * @return void
      */
-    static public function validateScript(string $script);
+    public static function validateScript(string $script);
 
     /**
      * @param string $script
      * @return OutputInterface
      */
-    static public function fromScript(string $script): OutputInterface;
+    public static function fromScript(string $script): OutputInterface;
 
     /**
      * @param string $hex
      * @return OutputInterface
      */
-    static public function fromHex(string $hex): OutputInterface;
+    public static function fromHex(string $hex): OutputInterface;
 }

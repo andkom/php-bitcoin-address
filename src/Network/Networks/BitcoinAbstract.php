@@ -15,8 +15,10 @@ use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use AndKom\Bitcoin\Address\Utils;
 use AndKom\Bitcoin\Address\Validate;
 use BrooksYang\Bech32m\Exception\Bech32mException;
+
 use function BrooksYang\Bech32m\decodeSegwit;
 use function BrooksYang\Bech32m\encodeSegwit;
+
 use const BrooksYang\Bech32m\BECH32;
 use const BrooksYang\Bech32m\BECH32M;
 
@@ -28,7 +30,7 @@ abstract class BitcoinAbstract implements NetworkInterface
 {
     const VERSION_SEGWIT = 0;
     const VERSION_TAPROOT = 1;
-    
+
     /**
      * @var string
      */
@@ -45,12 +47,12 @@ abstract class BitcoinAbstract implements NetworkInterface
     protected $prefixBech32 = 'bc';
 
     /**
-     * @var bool 
+     * @var bool
      */
     protected $hasSegwit = false;
 
     /**
-     * @var bool 
+     * @var bool
      */
     protected $hasTaproot = false;
 
@@ -85,7 +87,7 @@ abstract class BitcoinAbstract implements NetworkInterface
         if (!$this->hasSegwit) {
             throw new Exception('Segwit is not supported.');
         }
-        
+
         return encodeSegwit($this->prefixBech32, 0, $pubKeyHash, BECH32);
     }
 
@@ -149,7 +151,7 @@ abstract class BitcoinAbstract implements NetworkInterface
         if ($this->hasTaproot && 0 === strpos($address, $this->prefixBech32)) {
             try {
                 list($version, $hash) = decodeSegwit($this->prefixBech32, $address, BECH32M);
-                
+
                 if ($version === static::VERSION_TAPROOT) {
                     return new P2tr($hash);
                 }

@@ -80,13 +80,14 @@ class P2pkh extends AbstractOutput
      * @param string $script
      * @throws Exception
      */
-    static public function validateScript(string $script)
+    public static function validateScript(string $script)
     {
         if (static::SCRIPT_LEN != strlen($script)) {
             throw new Exception('Invalid P2PKH script length.');
         }
 
-        if (Op::DUP != $script[0] ||
+        if (
+            Op::DUP != $script[0] ||
             Op::HASH160 != $script[1] ||
             "\x14" != $script[2] ||
             Op::EQUALVERIFY != $script[-2] ||
@@ -101,7 +102,7 @@ class P2pkh extends AbstractOutput
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromScript(string $script): OutputInterface
+    public static function fromScript(string $script): OutputInterface
     {
         static::validateScript($script);
 

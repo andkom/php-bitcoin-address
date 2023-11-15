@@ -82,12 +82,14 @@ class P2pk extends AbstractOutput
      * @param string $script
      * @throws Exception
      */
-    static public function validateScript(string $script)
+    public static function validateScript(string $script)
     {
         $scriptLen = strlen($script);
 
-        if (static::COMPRESSED_SCRIPT_LEN != $scriptLen &&
-            static::UNCOMPRESSED_SCRIPT_LEN != $scriptLen) {
+        if (
+            static::COMPRESSED_SCRIPT_LEN != $scriptLen &&
+            static::UNCOMPRESSED_SCRIPT_LEN != $scriptLen
+        ) {
             throw new Exception('Invalid P2PK script length.');
         }
 
@@ -101,7 +103,7 @@ class P2pk extends AbstractOutput
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromScript(string $script): OutputInterface
+    public static function fromScript(string $script): OutputInterface
     {
         static::validateScript($script);
 

@@ -29,7 +29,7 @@ class NetworkFactory
     /**
      * @var array
      */
-    static protected $networks = [
+    protected static $networks = [
         'bitcoin',
         'bitcoinTestnet',
         'bitcoinCash',
@@ -49,12 +49,12 @@ class NetworkFactory
     /**
      * @var NetworkInterface
      */
-    static protected $defaultNetwork;
+    protected static $defaultNetwork;
 
     /**
      * @param NetworkInterface $network
      */
-    static public function setDefaultNetwork(NetworkInterface $network)
+    public static function setDefaultNetwork(NetworkInterface $network)
     {
         static::$defaultNetwork = $network;
     }
@@ -62,7 +62,7 @@ class NetworkFactory
     /**
      * @return NetworkInterface
      */
-    static public function getDefaultNetwork(): NetworkInterface
+    public static function getDefaultNetwork(): NetworkInterface
     {
         return static::$defaultNetwork ?: static::bitcoin();
     }
@@ -102,6 +102,6 @@ class NetworkFactory
      */
     public static function __callStatic($name, $arguments)
     {
-        return (new static)->createNetwork($name, $arguments);
+        return (new static())->createNetwork($name, $arguments);
     }
 }

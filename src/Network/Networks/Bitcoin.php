@@ -11,12 +11,12 @@ namespace AndKom\Bitcoin\Address\Network\Networks;
 class Bitcoin extends BitcoinAbstract
 {
     /**
-     * @var bool 
+     * @var bool
      */
     protected $hasSegwit = true;
 
     /**
-     * @var bool 
+     * @var bool
      */
     protected $hasTaproot = true;
 }

@@ -25,7 +25,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function p2pk(string $pubKey): OutputInterface
+    public static function p2pk(string $pubKey): OutputInterface
     {
         return new P2pk($pubKey);
     }
@@ -35,7 +35,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function p2pkh(string $pubKeyHash): OutputInterface
+    public static function p2pkh(string $pubKeyHash): OutputInterface
     {
         return new P2pkh($pubKeyHash);
     }
@@ -46,7 +46,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function p2ms(int $m, array $pubKeys): OutputInterface
+    public static function p2ms(int $m, array $pubKeys): OutputInterface
     {
         return new P2ms($m, $pubKeys);
     }
@@ -56,7 +56,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function p2sh(OutputInterface $output): OutputInterface
+    public static function p2sh(OutputInterface $output): OutputInterface
     {
         return new P2sh($output);
     }
@@ -66,7 +66,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function p2wpkh(string $pubKeyHash): OutputInterface
+    public static function p2wpkh(string $pubKeyHash): OutputInterface
     {
         return new P2wpkh($pubKeyHash);
     }
@@ -76,7 +76,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function p2wsh(OutputInterface $output): OutputInterface
+    public static function p2wsh(OutputInterface $output): OutputInterface
     {
         return new P2wsh($output);
     }
@@ -85,7 +85,7 @@ class OutputFactory
      * @param string $taprootPubKey
      * @return OutputInterface
      */
-    static public function p2tr(string $taprootPubKey): OutputInterface
+    public static function p2tr(string $taprootPubKey): OutputInterface
     {
         return new P2tr($taprootPubKey);
     }
@@ -95,7 +95,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromScript(string $script): OutputInterface
+    public static function fromScript(string $script): OutputInterface
     {
         $map = [
             P2pk::COMPRESSED_SCRIPT_LEN => P2pk::class,
@@ -114,7 +114,7 @@ class OutputFactory
             $class = P2wpkh::class;
         } elseif (P2wsh::SCRIPT_LEN === $scriptLen && P2wsh::WITNESS_VERSION === $script[0]) {
             $class = P2wsh::class;
-        } else if (P2wsh::SCRIPT_LEN === $scriptLen && P2tr::WITNESS_VERSION === $script[0]) {
+        } elseif (P2wsh::SCRIPT_LEN === $scriptLen && P2tr::WITNESS_VERSION === $script[0]) {
             $class = P2tr::class;
         } else {
             throw new Exception('Unknown script type.');
@@ -128,7 +128,7 @@ class OutputFactory
      * @return OutputInterface
      * @throws Exception
      */
-    static public function fromHex(string $hex): OutputInterface
+    public static function fromHex(string $hex): OutputInterface
     {
         return static::fromScript(Utils::hex2bin($hex));
     }
