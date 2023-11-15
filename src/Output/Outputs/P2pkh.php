@@ -38,6 +38,14 @@ class P2pkh extends AbstractOutput
     /**
      * @return string
      */
+    public function getPubKeyHash(): string
+    {
+        return $this->pubKeyHash;
+    }
+
+    /**
+     * @return string
+     */
     public function script(): string
     {
         return Op::DUP . Op::HASH160 . "\x14" . $this->pubKeyHash . Op::EQUALVERIFY . Op::CHECKSIG;

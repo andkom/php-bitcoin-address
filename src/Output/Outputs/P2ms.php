@@ -59,6 +59,22 @@ class P2ms extends AbstractOutput
     }
 
     /**
+     * @return int
+     */
+    public function getSigCount(): int
+    {
+        return $this->m;
+    }
+
+    /**
+     * @return array|string[]
+     */
+    public function getPubKeys(): array
+    {
+        return $this->pubKeys;
+    }
+
+    /**
      * @return string
      */
     public function script(): string

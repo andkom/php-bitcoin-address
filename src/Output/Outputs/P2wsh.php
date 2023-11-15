@@ -42,6 +42,14 @@ class P2wsh extends AbstractOutput
     /**
      * @return string
      */
+    public function getWitnessHash(): string
+    {
+        return $this->witnessHash;
+    }
+    
+    /**
+     * @return string
+     */
     public function script(): string
     {
         return static::WITNESS_VERSION . "\x20" . $this->witnessHash;

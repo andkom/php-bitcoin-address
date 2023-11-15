@@ -38,6 +38,14 @@ class P2wpkh extends AbstractOutput
     /**
      * @return string
      */
+    public function getPubKeyHash(): string
+    {
+        return $this->pubKeyHash;
+    }
+
+    /**
+     * @return string
+     */
     public function script(): string
     {
         return static::WITNESS_VERSION . "\x14" . $this->pubKeyHash;
