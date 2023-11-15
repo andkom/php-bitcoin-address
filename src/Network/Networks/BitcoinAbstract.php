@@ -171,4 +171,18 @@ abstract class BitcoinAbstract implements NetworkInterface
 
         throw new Exception('Cannot decode address.');
     }
+
+    /**
+     * @param string $address
+     * @return bool
+     */
+    public function validateAddress(string $address): bool
+    {
+        try {
+            static::decodeAddress($address);
+            return true;
+        } catch (\Exception $exception) {
+            return false;
+        }
+    }
 }

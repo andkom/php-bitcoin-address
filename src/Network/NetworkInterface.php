@@ -47,4 +47,10 @@ interface NetworkInterface
      * @return OutputInterface
      */
     public function decodeAddress(string $address): OutputInterface;
+
+    /**
+     * @param string $address
+     * @return bool
+     */
+    public function validateAddress(string $address): bool;
 }

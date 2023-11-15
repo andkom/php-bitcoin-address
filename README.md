@@ -1,6 +1,6 @@
 ## PHP Bitcoin Address
 
-A simple P2PK, P2PKH, P2SH, P2WPKH, P2WSH output script/address parser/generator.
+A simple P2PK, P2PKH, P2SH, P2WPKH, P2WSH, P2TR output script/address parser/generator/validator.
 
 **Supported types:**
 
@@ -10,6 +10,7 @@ A simple P2PK, P2PKH, P2SH, P2WPKH, P2WSH output script/address parser/generator
 - Pay-To-ScriptHash (P2SH)
 - Pay-To-WitnessPubKeyHash (P2WPKH)
 - Pay-To-WitnessScriptHash (P2WSH)
+- Pay-To-Taproot (P2TR)
 - P2WPKH-over-P2SH
 - P2WSH-over-P2SH
 - any combination
@@ -101,4 +102,16 @@ Generate an address from an output script:
 
 ```php
 $address = OutputFactory::fromScript($script)->address();
+```
+
+Decode a Bitcoin address:
+
+```php
+$output = NetworkFactory::bitcoin()->decodeAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH');
+```
+
+Validate a Bitcoin address:
+
+```php
+$isValid = NetworkFactory::bitcoin()->validateAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH');
 ```
