@@ -88,7 +88,10 @@ class P2shTest extends TestCase
      */
     public function testAddressBitcoinGold(): void
     {
-        $this->assertEquals('AToUA3ZK5p6qsEPR85qopyPTKdGPaUNd9V', $this->getOutput()->address(NetworkFactory::bitcoinGold()));
+        $this->assertEquals(
+            'AToUA3ZK5p6qsEPR85qopyPTKdGPaUNd9V',
+            $this->getOutput()->address(NetworkFactory::bitcoinGold())
+        );
     }
 
     /**

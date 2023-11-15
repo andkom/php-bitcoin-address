@@ -52,7 +52,12 @@ class BitcoinTest extends TestCase
 
     public function testDecodeP2TR()
     {
-        $this->assertInstanceOf(P2tr::class, NetworkFactory::bitcoin()->decodeAddress('bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr'));
+        $this->assertInstanceOf(
+            P2tr::class,
+            NetworkFactory::bitcoin()->decodeAddress(
+                'bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr'
+            )
+        );
     }
 
     public function testValidateAddress()
@@ -72,11 +77,19 @@ class BitcoinTest extends TestCase
 
     public function testValidateAddressP2WSH()
     {
-        $this->assertTrue(NetworkFactory::bitcoin()->validateAddress('bc1q9qs9xv7mjghkd69fgx62xttxmeww5q7eekjxu0nxtzf4yu4ekf8s4plngs'));
+        $this->assertTrue(
+            NetworkFactory::bitcoin()->validateAddress(
+                'bc1q9qs9xv7mjghkd69fgx62xttxmeww5q7eekjxu0nxtzf4yu4ekf8s4plngs'
+            )
+        );
     }
 
     public function testValidateAddressP2TR()
     {
-        $this->assertTrue(NetworkFactory::bitcoin()->validateAddress('bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr'));
+        $this->assertTrue(
+            NetworkFactory::bitcoin()->validateAddress(
+                'bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr'
+            )
+        );
     }
 }

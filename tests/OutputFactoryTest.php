@@ -28,7 +28,10 @@ class OutputFactoryTest extends TestCase
     {
         $output = OutputFactory::fromHex('210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ac');
         $this->assertInstanceOf(P2pk::class, $output);
-        $this->assertEquals($output->getPubKey(), hex2bin('0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798'));
+        $this->assertEquals(
+            $output->getPubKey(),
+            hex2bin('0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798')
+        );
         $this->assertEquals($output->type(), 'p2pk');
     }
 
@@ -50,7 +53,10 @@ class OutputFactoryTest extends TestCase
     {
         $output = OutputFactory::fromHex('51210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f8179851ae');
         $this->assertInstanceOf(P2ms::class, $output);
-        $this->assertEquals($output->getPubKeys(), [hex2bin('0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798')]);
+        $this->assertEquals(
+            $output->getPubKeys(),
+            [hex2bin('0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798')]
+        );
         $this->assertEquals($output->getSigCount(), 1);
         $this->assertEquals($output->type(), 'p2ms');
     }
@@ -84,7 +90,10 @@ class OutputFactoryTest extends TestCase
     {
         $output = OutputFactory::fromHex('002028205333db922f66e8a941b4a32d66de5cea03d9cda46e3e6658935272b9b24f');
         $this->assertInstanceOf(P2wsh::class, $output);
-        $this->assertEquals($output->getWitnessHash(), hex2bin('28205333db922f66e8a941b4a32d66de5cea03d9cda46e3e6658935272b9b24f'));
+        $this->assertEquals(
+            $output->getWitnessHash(),
+            hex2bin('28205333db922f66e8a941b4a32d66de5cea03d9cda46e3e6658935272b9b24f')
+        );
         $this->assertEquals($output->type(), 'p2wsh');
     }
 
@@ -95,7 +104,10 @@ class OutputFactoryTest extends TestCase
     {
         $output = OutputFactory::fromHex('5120a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c');
         $this->assertInstanceOf(P2tr::class, $output);
-        $this->assertEquals($output->getTaprootPubKey(), hex2bin('a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c'));
+        $this->assertEquals(
+            $output->getTaprootPubKey(),
+            hex2bin('a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c')
+        );
         $this->assertEquals($output->type(), 'p2tr');
     }
 }
