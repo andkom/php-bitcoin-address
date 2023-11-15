@@ -7,6 +7,7 @@ namespace AndKom\Bitcoin\Address\Tests;
 use AndKom\Bitcoin\Address\Network\NetworkFactory;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2sh;
+use AndKom\Bitcoin\Address\Output\Outputs\P2tr;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wpkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use PHPUnit\Framework\TestCase;
@@ -35,5 +36,10 @@ class BitcoinTest extends TestCase
     public function testDecodeP2WSH()
     {
         $this->assertInstanceOf(P2wsh::class, NetworkFactory::bitcoin()->decodeAddress('bc1q9qs9xv7mjghkd69fgx62xttxmeww5q7eekjxu0nxtzf4yu4ekf8s4plngs'));
+    }
+
+    public function testDecodeP2TR()
+    {
+        $this->assertInstanceOf(P2tr::class, NetworkFactory::bitcoin()->decodeAddress('bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr'));
     }
 }

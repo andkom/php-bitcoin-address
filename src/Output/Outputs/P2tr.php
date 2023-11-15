@@ -17,6 +17,7 @@ use AndKom\Bitcoin\Address\Output\OutputInterface;
 class P2tr extends AbstractOutput
 {
     const SCRIPT_LEN = 34;
+    const WITNESS_VERSION = "\x51";
 
     /**
      * @var string
@@ -37,7 +38,7 @@ class P2tr extends AbstractOutput
      */
     public function script(): string
     {
-        return "\x51\x20" . $this->taprootPubKey;
+        return static::WITNESS_VERSION . "\x20" . $this->taprootPubKey;
     }
 
     /**
@@ -67,7 +68,7 @@ class P2tr extends AbstractOutput
             throw new Exception('Invalid P2TR script length.');
         }
 
-        if ("\x51" != $script[0] ||
+        if (static::WITNESS_VERSION != $script[0] ||
             "\x20" != $script[1]) {
             throw new Exception('Invalid P2TR script format.');
         }

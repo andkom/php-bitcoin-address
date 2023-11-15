@@ -102,8 +102,6 @@ class OutputFactory
             P2pk::UNCOMPRESSED_SCRIPT_LEN => P2pk::class,
             P2pkh::SCRIPT_LEN => P2pkh::class,
             P2sh::SCRIPT_LEN => P2sh::class,
-            P2wpkh::SCRIPT_LEN => P2wpkh::class,
-            P2wsh::SCRIPT_LEN => P2wsh::class,
         ];
 
         $scriptLen = strlen($script);
@@ -112,6 +110,12 @@ class OutputFactory
             $class = $map[$scriptLen];
         } elseif ($scriptLen >= P2ms::MIN_SCRIPT_LEN) {
             $class = P2ms::class;
+        } elseif (P2wpkh::SCRIPT_LEN === $scriptLen && P2wpkh::WITNESS_VERSION === $script[0]) {
+            $class = P2wpkh::class;
+        } elseif (P2wsh::SCRIPT_LEN === $scriptLen && P2wsh::WITNESS_VERSION === $script[0]) {
+            $class = P2wsh::class;
+        } else if (P2wsh::SCRIPT_LEN === $scriptLen && P2tr::WITNESS_VERSION === $script[0]) {
+            $class = P2tr::class;
         } else {
             throw new Exception('Unknown script type.');
         }

@@ -10,6 +10,7 @@ use AndKom\Bitcoin\Address\Output\Outputs\P2ms;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pk;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2sh;
+use AndKom\Bitcoin\Address\Output\Outputs\P2tr;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wpkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use PHPUnit\Framework\TestCase;
@@ -72,5 +73,14 @@ class OutputFactoryTest extends TestCase
     {
         $output = OutputFactory::fromHex('002028205333db922f66e8a941b4a32d66de5cea03d9cda46e3e6658935272b9b24f');
         $this->assertInstanceOf(P2wsh::class, $output);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testFromHexP2TR()
+    {
+        $output = OutputFactory::fromHex('5120a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c');
+        $this->assertInstanceOf(P2tr::class, $output);
     }
 }

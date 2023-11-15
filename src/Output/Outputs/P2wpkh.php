@@ -18,6 +18,7 @@ use AndKom\Bitcoin\Address\Validate;
 class P2wpkh extends AbstractOutput
 {
     const SCRIPT_LEN = 22;
+    const WITNESS_VERSION = "\x00";
 
     /**
      * @var string
@@ -39,7 +40,7 @@ class P2wpkh extends AbstractOutput
      */
     public function script(): string
     {
-        return "\x00\x14" . $this->pubKeyHash;
+        return static::WITNESS_VERSION . "\x14" . $this->pubKeyHash;
     }
 
     /**
@@ -69,7 +70,7 @@ class P2wpkh extends AbstractOutput
             throw new Exception('Invalid P2WPKH script length.');
         }
 
-        if ("\x00" != $script[0] ||
+        if (static::WITNESS_VERSION != $script[0] ||
             "\x14" != $script[1]) {
             throw new Exception('Invalid P2WPKH script format.');
         }

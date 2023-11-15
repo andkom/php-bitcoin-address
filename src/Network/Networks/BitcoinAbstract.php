@@ -9,6 +9,7 @@ use AndKom\Bitcoin\Address\Network\NetworkInterface;
 use AndKom\Bitcoin\Address\Output\OutputInterface;
 use AndKom\Bitcoin\Address\Output\Outputs\P2pkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2sh;
+use AndKom\Bitcoin\Address\Output\Outputs\P2tr;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wpkh;
 use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use AndKom\Bitcoin\Address\Utils;
@@ -25,6 +26,9 @@ use const BrooksYang\Bech32m\BECH32M;
  */
 abstract class BitcoinAbstract implements NetworkInterface
 {
+    const VERSION_SEGWIT = 0;
+    const VERSION_TAPROOT = 1;
+    
     /**
      * @var string
      */
@@ -123,23 +127,46 @@ abstract class BitcoinAbstract implements NetworkInterface
      */
     public function decodeAddress(string $address): OutputInterface
     {
-        if ($this->prefixBech32 && 0 === strpos($address, $this->prefixBech32)) {
-            list(, $hash) = decodeSegwit($this->prefixBech32, $address, BECH32);
-            $hashLen = strlen($hash);
+        // decode segwit
+        if ($this->hasSegwit && 0 === strpos($address, $this->prefixBech32)) {
+            try {
+                list($version, $hash) = decodeSegwit($this->prefixBech32, $address, BECH32);
 
-            if (Validate::SCRIPT_HASH_LEN == $hashLen) {
-                return new P2wpkh($hash);
-            } elseif (Validate::WITNESS_HASH_LEN == $hashLen) {
-                return new P2wsh($hash);
+                if ($version === static::VERSION_SEGWIT) {
+                    $hashLen = strlen($hash);
+
+                    if (Validate::SCRIPT_HASH_LEN == $hashLen) {
+                        return new P2wpkh($hash);
+                    } elseif (Validate::WITNESS_HASH_LEN == $hashLen) {
+                        return new P2wsh($hash);
+                    }
+                }
+            } catch (\Exception $exception) {
             }
         }
 
-        list($hash, $prefix) = Utils::base58decode($address);
+        // decode taproot
+        if ($this->hasTaproot && 0 === strpos($address, $this->prefixBech32)) {
+            try {
+                list($version, $hash) = decodeSegwit($this->prefixBech32, $address, BECH32M);
+                
+                if ($version === static::VERSION_TAPROOT) {
+                    return new P2tr($hash);
+                }
+            } catch (\Exception $exception) {
+            }
+        }
 
-        if ($prefix == $this->prefixP2pkh) {
-            return new P2pkh($hash);
-        } elseif ($prefix == $this->prefixP2sh) {
-            return new P2sh($hash);
+        // decode legacy
+        try {
+            list($hash, $prefix) = Utils::base58decode($address);
+
+            if ($prefix == $this->prefixP2pkh) {
+                return new P2pkh($hash);
+            } elseif ($prefix == $this->prefixP2sh) {
+                return new P2sh($hash);
+            }
+        } catch (\Exception $exception) {
         }
 
         throw new Exception('Cannot decode address.');
