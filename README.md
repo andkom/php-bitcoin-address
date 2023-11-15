@@ -113,11 +113,11 @@ $output = NetworkFactory::bitcoin()->decodeAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ
 Get a Bitcoin address type:
 
 ```php
-$output = NetworkFactory::bitcoin()->decodeAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH')->type();
+$type = NetworkFactory::bitcoin()->decodeAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH')->type(); // p2pkh
 ```
 
 Validate a Bitcoin address:
 
 ```php
-$isValid = NetworkFactory::bitcoin()->validateAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH');
+NetworkFactory::bitcoin()->validateAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH'); // true
 ```
