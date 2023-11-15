@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class TaprootTest extends TestCase
 {
-    public function testAddress()
+    public function testAddress(): void
     {
         $pubKeys = [
             '026f7b861432127845aac3f0685f03359d73c5009929cfa88920aaba8419e0d3fc'

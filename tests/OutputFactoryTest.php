@@ -100,7 +100,7 @@ class OutputFactoryTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testFromHexP2TR()
+    public function testFromHexP2TR(): void
     {
         $output = OutputFactory::fromHex('5120a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c');
         $this->assertInstanceOf(P2tr::class, $output);

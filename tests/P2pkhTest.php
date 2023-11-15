@@ -194,7 +194,7 @@ class P2pkhTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testAddressClams()
+    public function testAddressClams(): void
     {
         $this->assertEquals('xJyuT2j5dnLoBhHraFjzG2hmMDjnS3fefx', $this->getOutput()->address(NetworkFactory::clams()));
     }

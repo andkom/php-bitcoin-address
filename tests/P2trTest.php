@@ -33,7 +33,7 @@ class P2trTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testHex()
+    public function testHex(): void
     {
         $this->assertEquals(
             '5120a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c',
@@ -44,7 +44,7 @@ class P2trTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testAsm()
+    public function testAsm(): void
     {
         $this->assertEquals(
             '1 PUSHDATA(32)[a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c]',
@@ -55,7 +55,7 @@ class P2trTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testAddressBitcoin()
+    public function testAddressBitcoin(): void
     {
         $this->assertEquals(
             'bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr',
@@ -66,7 +66,7 @@ class P2trTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testAddressBitcoinTestnet()
+    public function testAddressBitcoinTestnet(): void
     {
         $this->assertEquals(
             'tb1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqp3mvzv',
@@ -77,7 +77,7 @@ class P2trTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testAddressLitecoin()
+    public function testAddressLitecoin(): void
     {
         $this->assertEquals(
             'ltc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxq4arnzx',
@@ -88,7 +88,7 @@ class P2trTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testAddressLitecoinTestnet()
+    public function testAddressLitecoinTestnet(): void
     {
         $this->assertEquals(
             'tltc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxq7j8dan',
@@ -99,7 +99,7 @@ class P2trTest extends TestCase
     /**
      * @throws Exception
      */
-    public function testFromScript()
+    public function testFromScript(): void
     {
         $output = $this->getOutput();
         $this->assertEquals($output->script(), P2tr::fromScript($output->script())->script());
