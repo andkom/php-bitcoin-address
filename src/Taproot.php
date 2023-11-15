@@ -17,7 +17,6 @@ class Taproot
     /**
      * @param string $pubKey
      * @param string $merkleRoot
-     * @return PointInterface
      * @throws Exception
      */
     public static function construct(string $pubKey, string $merkleRoot = ''): string

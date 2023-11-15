@@ -103,6 +103,6 @@ class P2tr extends AbstractOutput
 
         $taprootPubKey = substr($script, 2, 32);
 
-        return new static($taprootPubKey);
+        return new P2tr($taprootPubKey);
     }
 }

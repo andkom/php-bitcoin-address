@@ -95,6 +95,6 @@ class Point extends \Mdanter\Ecc\Primitives\Point
             $y = $curve->recoverYfromX($prefix === '03', $x);
         }
 
-        return new static($adapter, $curve, $x, $y);
+        return new Point($adapter, $curve, $x, $y);
     }
 }
