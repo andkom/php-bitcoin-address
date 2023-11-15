@@ -16,13 +16,13 @@
     "require": {
         "bitwasp/bech32": "^0.0.1",
         "btccom/cashaddress": "^0.0.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "*",
-        "squizlabs/php_codesniffer": "*",
         "stephenhill/base58": "^1.1"
     },
     "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
         "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7",
+        "squizlabs/php_codesniffer": "*"
     },
     "autoload": {
         "psr-4": {
