@@ -110,6 +110,12 @@ Decode a Bitcoin address:
 $output = NetworkFactory::bitcoin()->decodeAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH');
 ```
 
+Get a Bitcoin address type:
+
+```php
+$output = NetworkFactory::bitcoin()->decodeAddress('1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH')->type();
+```
+
 Validate a Bitcoin address:
 
 ```php
