@@ -47,6 +47,9 @@
         "test": [
             "phpunit"
         ],
+        "test-coverage":[
+            "phpunit --coverage-text --coverage-clover tests/_reports/clover.xml --coverage-html tests/_reports/html"
+        ],
         "lint": [
             "phpcbf || true",
             "phpcs || true",
