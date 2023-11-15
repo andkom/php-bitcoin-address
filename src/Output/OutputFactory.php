@@ -42,7 +42,7 @@ class OutputFactory
 
     /**
      * @param int $m
-     * @param array $pubKeys
+     * @param string[] $pubKeys
      * @return OutputInterface
      * @throws Exception
      */

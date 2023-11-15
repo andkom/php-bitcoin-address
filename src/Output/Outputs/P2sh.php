@@ -18,7 +18,7 @@ use AndKom\Bitcoin\Address\Validate;
  */
 class P2sh extends AbstractOutput
 {
-    const SCRIPT_LEN = 23;
+    public const SCRIPT_LEN = 23;
 
     /**
      * @var string
@@ -111,6 +111,6 @@ class P2sh extends AbstractOutput
 
         $scriptHash = substr($script, 2, -1);
 
-        return new static($scriptHash);
+        return new P2sh($scriptHash);
     }
 }

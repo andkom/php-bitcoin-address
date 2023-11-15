@@ -17,8 +17,8 @@ use AndKom\Bitcoin\Address\Validate;
  */
 class P2wpkh extends AbstractOutput
 {
-    const SCRIPT_LEN = 22;
-    const WITNESS_VERSION = "\x00";
+    public const SCRIPT_LEN = 22;
+    public const WITNESS_VERSION = "\x00";
 
     /**
      * @var string
@@ -105,6 +105,6 @@ class P2wpkh extends AbstractOutput
 
         $pubKeyHash = substr($script, 2, 20);
 
-        return new static($pubKeyHash);
+        return new P2wpkh($pubKeyHash);
     }
 }

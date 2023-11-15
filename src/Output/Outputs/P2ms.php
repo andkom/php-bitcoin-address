@@ -18,7 +18,7 @@ use AndKom\Bitcoin\Address\Validate;
  */
 class P2ms extends AbstractOutput
 {
-    const MIN_SCRIPT_LEN = 37;
+    public const MIN_SCRIPT_LEN = 37;
 
     /**
      * Number of signatures
@@ -35,7 +35,7 @@ class P2ms extends AbstractOutput
     /**
      * P2ms constructor.
      * @param int $m Number of signatures
-     * @param array $pubKeys
+     * @param string[] $pubKeys
      * @throws Exception
      */
     public function __construct(int $m, array $pubKeys)
@@ -179,6 +179,6 @@ class P2ms extends AbstractOutput
             $i += $pubKeyLen + 1;
         }
 
-        return new static($m, $pubKeys);
+        return new P2ms($m, $pubKeys);
     }
 }

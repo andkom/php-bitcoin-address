@@ -17,8 +17,8 @@ use AndKom\Bitcoin\Address\Validate;
  */
 class P2wsh extends AbstractOutput
 {
-    const SCRIPT_LEN = 34;
-    const WITNESS_VERSION = "\x00";
+    public const SCRIPT_LEN = 34;
+    public const WITNESS_VERSION = "\x00";
 
     /**
      * @var string
@@ -109,6 +109,6 @@ class P2wsh extends AbstractOutput
 
         $witnessHash = substr($script, 2, 32);
 
-        return new static($witnessHash);
+        return new P2wsh($witnessHash);
     }
 }

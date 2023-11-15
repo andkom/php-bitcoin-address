@@ -18,7 +18,7 @@ use AndKom\Bitcoin\Address\Validate;
  */
 class P2pkh extends AbstractOutput
 {
-    const SCRIPT_LEN = 25;
+    public const SCRIPT_LEN = 25;
 
     /**
      * @var string
@@ -108,6 +108,6 @@ class P2pkh extends AbstractOutput
 
         $pubKeyHash = substr($script, 3, 20);
 
-        return new static($pubKeyHash);
+        return new P2pkh($pubKeyHash);
     }
 }

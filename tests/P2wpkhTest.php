@@ -23,77 +23,101 @@ class P2wpkhTest extends TestCase
      */
     protected function getOutput(): OutputInterface
     {
-        return OutputFactory::p2wpkh(hex2bin('751e76e8199196d454941c45d1b3a323f1433bd6'));
+        return OutputFactory::p2wpkh(hex2bin('751e76e8199196d454941c45d1b3a323f1433bd6') ?: '');
     }
 
     /**
      * @throws Exception
      */
-    public function testHex()
+    public function testHex(): void
     {
-        $this->assertEquals('0014751e76e8199196d454941c45d1b3a323f1433bd6', $this->getOutput()->hex());
+        $this->assertEquals(
+            '0014751e76e8199196d454941c45d1b3a323f1433bd6',
+            $this->getOutput()->hex()
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAsm()
+    public function testAsm(): void
     {
-        $this->assertEquals('0 PUSHDATA(20)[751e76e8199196d454941c45d1b3a323f1433bd6]', $this->getOutput()->asm());
+        $this->assertEquals(
+            '0 PUSHDATA(20)[751e76e8199196d454941c45d1b3a323f1433bd6]',
+            $this->getOutput()->asm()
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressBitcoin()
+    public function testAddressBitcoin(): void
     {
-        $this->assertEquals('bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4', $this->getOutput()->address());
+        $this->assertEquals(
+            'bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4',
+            $this->getOutput()->address()
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressBitcoinTestnet()
+    public function testAddressBitcoinTestnet(): void
     {
-        $this->assertEquals('tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx', $this->getOutput()->address(NetworkFactory::bitcoinTestnet()));
+        $this->assertEquals(
+            'tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx',
+            $this->getOutput()->address(NetworkFactory::bitcoinTestnet())
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressLitecoin()
+    public function testAddressLitecoin(): void
     {
-        $this->assertEquals('ltc1qw508d6qejxtdg4y5r3zarvary0c5xw7kgmn4n9', $this->getOutput()->address(NetworkFactory::litecoin()));
+        $this->assertEquals(
+            'ltc1qw508d6qejxtdg4y5r3zarvary0c5xw7kgmn4n9',
+            $this->getOutput()->address(NetworkFactory::litecoin())
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressLitecoinTestnet()
+    public function testAddressLitecoinTestnet(): void
     {
-        $this->assertEquals('tltc1qw508d6qejxtdg4y5r3zarvary0c5xw7klfsuq0', $this->getOutput()->address(NetworkFactory::litecoinTestnet()));
+        $this->assertEquals(
+            'tltc1qw508d6qejxtdg4y5r3zarvary0c5xw7klfsuq0',
+            $this->getOutput()->address(NetworkFactory::litecoinTestnet())
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressViacoin()
+    public function testAddressViacoin(): void
     {
-        $this->assertEquals('via1qw508d6qejxtdg4y5r3zarvary0c5xw7kxzdzsn', $this->getOutput()->address(NetworkFactory::viacoin()));
+        $this->assertEquals(
+            'via1qw508d6qejxtdg4y5r3zarvary0c5xw7kxzdzsn',
+            $this->getOutput()->address(NetworkFactory::viacoin())
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressViacoinTestnet()
+    public function testAddressViacoinTestnet(): void
     {
-        $this->assertEquals('tvia1qw508d6qejxtdg4y5r3zarvary0c5xw7k3swtre', $this->getOutput()->address(NetworkFactory::viacoinTestnet()));
+        $this->assertEquals(
+            'tvia1qw508d6qejxtdg4y5r3zarvary0c5xw7k3swtre',
+            $this->getOutput()->address(NetworkFactory::viacoinTestnet())
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testFromScript()
+    public function testFromScript(): void
     {
         $output = $this->getOutput();
         $this->assertEquals($output->script(), P2wpkh::fromScript($output->script())->script());

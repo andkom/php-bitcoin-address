@@ -27,7 +27,7 @@ use AndKom\Bitcoin\Address\Exception;
 class NetworkFactory
 {
     /**
-     * @var array
+     * @var string[]
      */
     protected static $networks = [
         'bitcoin',
@@ -54,7 +54,7 @@ class NetworkFactory
     /**
      * @param NetworkInterface $network
      */
-    public static function setDefaultNetwork(NetworkInterface $network)
+    public static function setDefaultNetwork(NetworkInterface $network): void
     {
         static::$defaultNetwork = $network;
     }
@@ -69,7 +69,7 @@ class NetworkFactory
 
     /**
      * @param string $name
-     * @param array $arguments
+     * @param array<mixed> $arguments
      * @return NetworkInterface
      * @throws Exception
      */
@@ -81,27 +81,33 @@ class NetworkFactory
 
         $class = 'AndKom\\Bitcoin\\Address\\Network\\Networks\\' . ucfirst($name);
 
-        return new $class(...$arguments);
+        $network = new $class(...$arguments);
+
+        if (! $network instanceof NetworkInterface) {
+            throw new Exception("{$class} was not a NetworkInterface");
+        }
+
+        return $network;
     }
 
     /**
-     * @param $name
-     * @param $arguments
+     * @param string $name
+     * @param array<mixed> $arguments
      * @return NetworkInterface
      * @throws Exception
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         return $this->createNetwork($name, $arguments);
     }
 
     /**
-     * @param $name
-     * @param $arguments
+     * @param string $name
+     * @param array<mixed> $arguments
      * @return NetworkInterface
      */
-    public static function __callStatic($name, $arguments)
+    public static function __callStatic(string $name, array $arguments)
     {
-        return (new static())->createNetwork($name, $arguments);
+        return (new NetworkFactory())->createNetwork($name, $arguments);
     }
 }
