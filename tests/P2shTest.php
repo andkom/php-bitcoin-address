@@ -151,6 +151,14 @@ class P2shTest extends TestCase
     /**
      * @throws Exception
      */
+    public function testAddressClams()
+    {
+        $this->assertEquals('6SRSJxaRz1U5gtzYstWcyifb2agxWxnFiW', $this->getOutput()->address(NetworkFactory::clams()));
+    }
+
+    /**
+     * @throws Exception
+     */
     public function testFromScript()
     {
         $output = $this->getOutput();
