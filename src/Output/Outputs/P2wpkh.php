@@ -68,8 +68,8 @@ class P2wpkh extends AbstractOutput
     }
 
     /**
-     * @return string
      * @param NetworkInterface|null $network
+     * @return string
      */
     public function address(NetworkInterface $network = null): string
     {
