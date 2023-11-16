@@ -11,4 +11,9 @@
       <directory suffix=".php">./src</directory>
     </include>
   </source>
+  <filter>
+      <whitelist processUncoveredFilesFromWhitelist="true">
+          <directory suffix=".php">./src</directory>
+      </whitelist>
+  </filter>
 </phpunit>

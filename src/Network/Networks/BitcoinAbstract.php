@@ -15,8 +15,10 @@ use AndKom\Bitcoin\Address\Output\Outputs\P2wsh;
 use AndKom\Bitcoin\Address\Utils;
 use AndKom\Bitcoin\Address\Validate;
 use BrooksYang\Bech32m\Exception\Bech32mException;
+
 use function BrooksYang\Bech32m\decodeSegwit;
 use function BrooksYang\Bech32m\encodeSegwit;
+
 use const BrooksYang\Bech32m\BECH32;
 use const BrooksYang\Bech32m\BECH32M;
 
@@ -26,8 +28,8 @@ use const BrooksYang\Bech32m\BECH32M;
  */
 abstract class BitcoinAbstract implements NetworkInterface
 {
-    const VERSION_SEGWIT = 0;
-    const VERSION_TAPROOT = 1;
+    public const VERSION_SEGWIT = 0;
+    public const VERSION_TAPROOT = 1;
 
     /**
      * @var string

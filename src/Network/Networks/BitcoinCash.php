@@ -59,8 +59,10 @@ class BitcoinCash extends BitcoinAbstract
      */
     public function decodeAddress(string $address): OutputInterface
     {
-        if (strpos($address, $this->prefixP2pkh) !== 0 ||
-            strpos($address, $this->prefixP2sh) !== 0) {
+        if (
+            strpos($address, $this->prefixP2pkh) !== 0 ||
+            strpos($address, $this->prefixP2sh) !== 0
+        ) {
             throw new Exception('Cannot decode address.');
         }
 

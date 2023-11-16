@@ -27,9 +27,9 @@ use AndKom\Bitcoin\Address\Exception;
 class NetworkFactory
 {
     /**
-     * @var array
+     * @var string[]
      */
-    static protected $networks = [
+    protected static $networks = [
         'bitcoin',
         'bitcoinTestnet',
         'bitcoinCash',
@@ -49,12 +49,12 @@ class NetworkFactory
     /**
      * @var NetworkInterface
      */
-    static protected $defaultNetwork;
+    protected static $defaultNetwork;
 
     /**
      * @param NetworkInterface $network
      */
-    static public function setDefaultNetwork(NetworkInterface $network)
+    public static function setDefaultNetwork(NetworkInterface $network): void
     {
         static::$defaultNetwork = $network;
     }
@@ -62,14 +62,14 @@ class NetworkFactory
     /**
      * @return NetworkInterface
      */
-    static public function getDefaultNetwork(): NetworkInterface
+    public static function getDefaultNetwork(): NetworkInterface
     {
         return static::$defaultNetwork ?: static::bitcoin();
     }
 
     /**
      * @param string $name
-     * @param array $arguments
+     * @param array<mixed> $arguments
      * @return NetworkInterface
      * @throws Exception
      */
@@ -81,27 +81,33 @@ class NetworkFactory
 
         $class = 'AndKom\\Bitcoin\\Address\\Network\\Networks\\' . ucfirst($name);
 
-        return new $class(...$arguments);
+        $network = new $class(...$arguments);
+
+        if (! $network instanceof NetworkInterface) {
+            throw new Exception("{$class} was not a NetworkInterface");
+        }
+
+        return $network;
     }
 
     /**
-     * @param $name
-     * @param $arguments
+     * @param string $name
+     * @param array<mixed> $arguments
      * @return NetworkInterface
      * @throws Exception
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         return $this->createNetwork($name, $arguments);
     }
 
     /**
-     * @param $name
-     * @param $arguments
+     * @param string $name
+     * @param array<mixed> $arguments
      * @return NetworkInterface
      */
-    public static function __callStatic($name, $arguments)
+    public static function __callStatic(string $name, array $arguments)
     {
-        return (new static)->createNetwork($name, $arguments);
+        return (new NetworkFactory())->createNetwork($name, $arguments);
     }
 }

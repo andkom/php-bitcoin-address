@@ -24,62 +24,82 @@ class P2trTest extends TestCase
      */
     protected function getOutput(): OutputInterface
     {
-        $taprootPubKey = Taproot::construct(hex2bin('03cc8a4bc64d897bddc5fbc2f670f7a8ba0b386779106cf1223c6fc5d7cd6fc115'));
+        $taprootPubKey = Taproot::construct(
+            hex2bin('03cc8a4bc64d897bddc5fbc2f670f7a8ba0b386779106cf1223c6fc5d7cd6fc115') ?: ''
+        );
         return OutputFactory::p2tr($taprootPubKey);
     }
 
     /**
      * @throws Exception
      */
-    public function testHex()
+    public function testHex(): void
     {
-        $this->assertEquals('5120a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c', $this->getOutput()->hex());
+        $this->assertEquals(
+            '5120a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c',
+            $this->getOutput()->hex()
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAsm()
+    public function testAsm(): void
     {
-        $this->assertEquals('1 PUSHDATA(32)[a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c]', $this->getOutput()->asm());
+        $this->assertEquals(
+            '1 PUSHDATA(32)[a60869f0dbcf1dc659c9cecbaf8050135ea9e8cdc487053f1dc6880949dc684c]',
+            $this->getOutput()->asm()
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressBitcoin()
+    public function testAddressBitcoin(): void
     {
-        $this->assertEquals('bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr', $this->getOutput()->address());
+        $this->assertEquals(
+            'bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr',
+            $this->getOutput()->address()
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressBitcoinTestnet()
+    public function testAddressBitcoinTestnet(): void
     {
-        $this->assertEquals('tb1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqp3mvzv', $this->getOutput()->address(NetworkFactory::bitcoinTestnet()));
+        $this->assertEquals(
+            'tb1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqp3mvzv',
+            $this->getOutput()->address(NetworkFactory::bitcoinTestnet())
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressLitecoin()
+    public function testAddressLitecoin(): void
     {
-        $this->assertEquals('ltc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxq4arnzx', $this->getOutput()->address(NetworkFactory::litecoin()));
+        $this->assertEquals(
+            'ltc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxq4arnzx',
+            $this->getOutput()->address(NetworkFactory::litecoin())
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testAddressLitecoinTestnet()
+    public function testAddressLitecoinTestnet(): void
     {
-        $this->assertEquals('tltc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxq7j8dan', $this->getOutput()->address(NetworkFactory::litecoinTestnet()));
+        $this->assertEquals(
+            'tltc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxq7j8dan',
+            $this->getOutput()->address(NetworkFactory::litecoinTestnet())
+        );
     }
 
     /**
      * @throws Exception
      */
-    public function testFromScript()
+    public function testFromScript(): void
     {
         $output = $this->getOutput();
         $this->assertEquals($output->script(), P2tr::fromScript($output->script())->script());

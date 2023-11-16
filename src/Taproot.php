@@ -17,10 +17,9 @@ class Taproot
     /**
      * @param string $pubKey
      * @param string $merkleRoot
-     * @return PointInterface
      * @throws Exception
      */
-    static public function construct(string $pubKey, string $merkleRoot = ''): string
+    public static function construct(string $pubKey, string $merkleRoot = ''): string
     {
         $generator = EccFactory::getSecgCurves()->generator256k1();
         $adapter = $generator->getAdapter();

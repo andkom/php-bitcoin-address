@@ -22,7 +22,10 @@
         "shanecurran/phpecc": "^0.0.1"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=5.7"
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": ">=5.7",
+        "squizlabs/php_codesniffer": "*"
     },
     "autoload": {
         "psr-4": {
@@ -33,5 +36,24 @@
         "psr-4": {
             "AndKom\\Bitcoin\\Address\\Tests\\": "tests/"
         }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ],
+        "test-coverage":[
+            "phpunit --coverage-text --coverage-clover tests/_reports/clover.xml --coverage-html tests/_reports/html"
+        ],
+        "lint": [
+            "phpcbf || true",
+            "phpcs || true",
+            "phpstan"
+        ]
     }
 }

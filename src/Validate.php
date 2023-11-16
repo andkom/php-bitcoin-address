@@ -10,20 +10,20 @@ namespace AndKom\Bitcoin\Address;
  */
 class Validate
 {
-    const COMPRESSED_PUBKEY_LEN = 33;
-    const COMPRESSED_PUBKEY_PREFIXES = ["\x02", "\x03"];
-    const UNCOMPRESSED_PUBKEY_LEN = 65;
-    const UNCOMRPESSED_PUBKEY_PREFIX = "\04";
-    const PUBKEY_HASH_LEN = 20;
-    const SCRIPT_HASH_LEN = 20;
-    const WITNESS_HASH_LEN = 32;
+    public const COMPRESSED_PUBKEY_LEN = 33;
+    public const COMPRESSED_PUBKEY_PREFIXES = ["\x02", "\x03"];
+    public const UNCOMPRESSED_PUBKEY_LEN = 65;
+    public const UNCOMRPESSED_PUBKEY_PREFIX = "\04";
+    public const PUBKEY_HASH_LEN = 20;
+    public const SCRIPT_HASH_LEN = 20;
+    public const WITNESS_HASH_LEN = 32;
 
     /**
      * @param string $pubKey
      * @return string
      * @throws Exception
      */
-    static public function pubKey(string $pubKey): string
+    public static function pubKey(string $pubKey): string
     {
         $len = strlen($pubKey);
 
@@ -48,7 +48,7 @@ class Validate
      * @return string
      * @throws Exception
      */
-    static public function pubKeyHash(string $pubKeyHash): string
+    public static function pubKeyHash(string $pubKeyHash): string
     {
         if (static::PUBKEY_HASH_LEN != strlen($pubKeyHash)) {
             throw new Exception(sprintf('Invalid pubkey hash: %s.', bin2hex($pubKeyHash)));
@@ -62,7 +62,7 @@ class Validate
      * @return string
      * @throws Exception
      */
-    static public function scriptHash(string $scriptHash): string
+    public static function scriptHash(string $scriptHash): string
     {
         if (static::SCRIPT_HASH_LEN != strlen($scriptHash)) {
             throw new Exception(sprintf('Invalid script hash: %s.', bin2hex($scriptHash)));
@@ -76,7 +76,7 @@ class Validate
      * @return string
      * @throws Exception
      */
-    static public function witnessHash(string $witnessHash): string
+    public static function witnessHash(string $witnessHash): string
     {
         if (static::WITNESS_HASH_LEN != strlen($witnessHash)) {
             throw new Exception(sprintf('Invalid witness hash: %s.', bin2hex($witnessHash)));
