@@ -26,7 +26,7 @@ class BitcoinGold extends Bitcoin
     protected $prefixBech32 = 'btg';
 
     /**
-     * @var bool 
+     * @var bool
      */
     protected $hasTaproot = false;
 }

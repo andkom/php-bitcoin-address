@@ -51,8 +51,8 @@ interface OutputInterface
 
     /**
      * @param string $script
-     * @throws Exception
      * @return void
+     * @throws Exception
      */
     static public function validateScript(string $script);
 

@@ -72,8 +72,8 @@ class P2sh extends AbstractOutput
     }
 
     /**
-     * @return string
      * @param NetworkInterface|null $network
+     * @return string
      * @throws \Exception
      */
     public function address(NetworkInterface $network = null): string
