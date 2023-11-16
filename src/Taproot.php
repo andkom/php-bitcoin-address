@@ -28,7 +28,7 @@ class Taproot
 
         $point = Point::fromPubKey($adapter, $curve, $pubKey)->liftX();
 
-        $x = hex2bin(gmp_strval($point->getX(), 16));
+        $x = $adapter->intToString($point->getX());
         $tweak = gmp_init(bin2hex(Utils::taggedHash('TapTweak', $x . $merkleRoot)), 16);
 
         if ($adapter->cmp($tweak, $generator->getOrder()) > 0) {
@@ -37,7 +37,7 @@ class Taproot
 
         $G = new Point($adapter, $curve, $generator->getX(), $generator->getY());
         $Q = $point->add($G->mul($tweak));
-
-        return hex2bin(gmp_strval($Q->getX(), 16));
+        
+        return $adapter->intToString($Q->getX());
     }
 }
